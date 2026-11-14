@@ -1,0 +1,41 @@
+{
+ "claim_id": "C046",
+ "lang": "hi",
+ "evidence_sha256": "1c3c865640b9cb2660bd09ee9c6d438a024069ccd464b2ed239b51dca89ba266",
+ "model": "gemini-3.5-flash-lite",
+ "prompt_hash": "9b8b5d9c7b93",
+ "called_at": "2026-11-14T20:49:40Z",
+ "http_status": 200,
+ "prompt": "You check a numerical claim about an Indian government scheme against an excerpt from official pages.\nUse only the evidence below. Do not use outside knowledge.\nSCHEME: Ayushman Bharat PM-JAY (Pradhan Mantri Jan Arogya Yojana)\nCLAIM: देश भर में 39,000 से ज्यादा सूचीबद्ध सरकारी और प्राइवेट अस्पतालों के जरिए 2 लाख करोड़ रुपए से ज्यादा का हॉस्पिटलाइजेशन और इलाज का लाभ उठाया गया है\nFIGURE TO CHECK: 39,000 से ज्यादा\nARTICLE DATE: 2026-09-23\nEVIDENCE:\n[Official page 1] URL: https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=160081&ModuleId=3&reg=3&lang=1\nPage date line: Posted On: 22 SEP 2026 2:16PM\nPage retrieved: 2026-11-14\n<<<\n…lives.\n\nThe Government of India launched the Ayushman Bharat Pradhan-Mantri Jan Aarogya Yojana (AB PM-JAY) eight years ago on September 23, 2018, to achieve universal health coverage. It is a public health assurance scheme and covers secondary and tertiary care. It is one of the world’s largest public healthcare schemes, with about 33% of India's population (over 48.51 crore people) already holding Ayushman cards on the scheme’s eighth launch anniversary (as of September 21, 2026).\n\nAB-PMJAY has served people with treatment worth upto Rs. 2.03 lakh crore in about 13.25 crore hospital admissions through a network of over 38,000 empanelled public and private hospitals (as on August 31, 2026).\n\nAB-PMJAY is one scheme under Ayushman Bharat that is promoting universal health coverage. The other schemes that are building India’s public health infrastructure are: Ayushman Aarogya Mandirs (AAM), Ayushman Bharat Digital Mission and PM-Ayushman Bharat Health Infrastructure Mission (PM-ABHIM). Led by AB-PMJAY, these four flagship schemes are strengthening India’s public health infrastructure to deliver universal health coverage.\n\nAB PM-JAY: Saving Citizens from Medical Debt\n\nAB PM-JAY…\n>>>\n\nLabels:\nMATCH: the evidence states a figure for the same metric, place and period, and it agrees with the claim at the precision the claim states (\"more than X\" agrees if the official figure is at least X; \"about X\" agrees within 5%).\nMISMATCH: the evidence states a figure for the same metric, place and period, and it does not agree.\nAMBIGUOUS: the evidence states a figure for this or a closely related metric, but it cannot settle the claim: a different definition or scope, a date more than about one month from the time the claim refers to, several official figures that disagree, or an official figure too imprecise to test the claim.\nCANNOT_VERIFY: the evidence does not state a figure for this metric and place.\nAnswer in JSON only, with exactly these keys:\n{\"label\": \"MATCH\" | \"MISMATCH\" | \"AMBIGUOUS\" | \"CANNOT_VERIFY\",\n \"official_figure\": <the official figure from the evidence you compared with the claim, as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <the date that official figure refers to, YYYY-MM-DD, or null>,\n \"evidence_quote\": <the shortest exact phrase from the evidence that states that figure, or null>,\n \"confidence\": <number from 0 to 1: how likely your label is correct>,\n \"reason\": <one sentence>}",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\n  \"label\": \"MISMATCH\",\n  \"official_figure\": 38000,\n  \"as_of_date\": \"2026-08-31\",\n  \"evidence_quote\": \"over 38,000 empanelled public and private hospitals\",\n  \"confidence\": 0.95,\n  \"reason\": \"The claim states there are more than 39,000 hospitals, whereas the evidence states there is a network of over 38,000 hospitals.\"\n}",
+       "thoughtSignature": "EmAKXgFpFH0TymRWi97C+2YAsZAfZ0+RLfbAm8iFgi2wPd81AZ1H0r7PnQckf3grPYNaDvz6qvPCaZjRTpgZ3na3B9nyLByon4CvJaP3sne34obirIoj2WvQnYfD3ZmEstQ="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 867,
+   "candidatesTokenCount": 123,
+   "totalTokenCount": 990,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 867
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "Y8n4auLkDL34694P9I-R8As"
+ }
+}

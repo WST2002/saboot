@@ -1,0 +1,41 @@
+{
+ "claim_id": "C069",
+ "lang": "hi",
+ "evidence_sha256": "d52584755ea85e5e3dadbfb02e1faf12363cae1f2d303fff0851d177a1f5cb40",
+ "model": "gemini-3.5-flash-lite",
+ "prompt_hash": "3bf1a9ce833c",
+ "called_at": "2026-11-14T20:52:58Z",
+ "http_status": 200,
+ "prompt": "You check a numerical claim about an Indian government scheme against an excerpt from official pages.\nUse only the evidence below. Do not use outside knowledge.\nSCHEME: Jal Jeevan Mission (JJM)\nCLAIM: उत्तरप्रदेश 92.3% हैं\nFIGURE TO CHECK: 92.3%\nARTICLE DATE: 2026-10-14\nEVIDENCE:\n[Official page 1] URL: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2290048&reg=3&lang=1\nPage date line: Posted On: 27 JUL 2026 6:09PM by PIB Delhi\nPage retrieved: 2026-11-14\n<<<\n…1.24\n\n93.09\n\n1.33\n\n100.00\n\n8.\n\nPuducherry\n\n1.15\n\n0.94\n\n81.33\n\n0.21\n\n18.67\n\n1.15\n\n100.00\n\n9.\n\nPunjab\n\n34.27\n\n16.79\n\n48.98\n\n17.48\n\n51.02\n\n34.27\n\n100.00\n\n10.\n\nTelangana\n\n53.98\n\n15.68\n\n29.05\n\n38.30\n\n70.95\n\n53.98\n\n100.00\n\n11.\n\nGujarat\n\n91.19\n\n65.16\n\n71.46\n\n26.02\n\n28.54\n\n91.18\n\n99.99\n\n12.\n\nLadakh\n\n0.41\n\n0.01\n\n3.49\n\n0.38\n\n94.71\n\n0.40\n\n98.19\n\n13.\n\nUttarakhand\n\n14.48\n\n1.30\n\n9.00\n\n12.90\n\n89.06\n\n14.20\n\n98.06\n\n14.\n\nBihar\n\n167.55\n\n3.16\n\n1.89\n\n157.20\n\n93.82\n\n160.36\n\n95.71\n\n15.\n\nNagaland\n\n3.64\n\n0.14\n\n3.82\n\n3.34\n\n91.88\n\n3.48\n\n95.69\n\n16.\n\nSikkim\n\n1.33\n\n0.70\n\n52.97\n\n0.52\n\n39.12\n\n1.22\n\n92.09\n\n17.\n\nUttar Pradesh…\n>>>\n\nLabels:\nMATCH: the evidence states a figure for the same metric, place and period, and it agrees with the claim at the precision the claim states (\"more than X\" agrees if the official figure is at least X; \"about X\" agrees within 5%).\nMISMATCH: the evidence states a figure for the same metric, place and period, and it does not agree.\nAMBIGUOUS: the evidence states a figure for this or a closely related metric, but it cannot settle the claim: a different definition or scope, a date more than about one month from the time the claim refers to, several official figures that disagree, or an official figure too imprecise to test the claim.\nCANNOT_VERIFY: the evidence does not state a figure for this metric and place.\nAnswer in JSON only, with exactly these keys:\n{\"label\": \"MATCH\" | \"MISMATCH\" | \"AMBIGUOUS\" | \"CANNOT_VERIFY\",\n \"official_figure\": <the official figure from the evidence you compared with the claim, as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <the date that official figure refers to, YYYY-MM-DD, or null>,\n \"evidence_quote\": <the shortest exact phrase from the evidence that states that figure, or null>,\n \"confidence\": <number from 0 to 1: how likely your label is correct>,\n \"reason\": <one sentence>}",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\"label\": \"CANNOT_VERIFY\", \"official_figure\": null, \"as_of_date\": null, \"evidence_quote\": null, \"confidence\": 1.0, \"reason\": \"The evidence mentions Uttar Pradesh in the list but does not provide the corresponding numerical percentage or data for it.\"}",
+       "thoughtSignature": "EmAKXgFpFH0TL3IeLcZME2+q3rk5tqMRA6PdlED4lur9uAU9LvGVrWKdMjrVxUR08kV83SnksOb0pkJQLsIanyf+cOga05EfXi6wO0OgI8mrQmTD67EK+hLrAa2tcpsaZjA="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 973,
+   "candidatesTokenCount": 67,
+   "totalTokenCount": 1040,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 973
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "Kcr4asHsJu_5v_gPn92d0AI"
+ }
+}

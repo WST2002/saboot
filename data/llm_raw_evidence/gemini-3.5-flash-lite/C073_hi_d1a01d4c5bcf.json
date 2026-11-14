@@ -1,0 +1,41 @@
+{
+ "claim_id": "C073",
+ "lang": "hi",
+ "evidence_sha256": "9f6238d8e3d8d55a71a642520db2edd108db974521aa46fc8ce97f8eb1e3c991",
+ "model": "gemini-3.5-flash-lite",
+ "prompt_hash": "d1a01d4c5bcf",
+ "called_at": "2026-11-14T20:53:34Z",
+ "http_status": 200,
+ "prompt": "You check a numerical claim about an Indian government scheme against an excerpt from official pages.\nUse only the evidence below. Do not use outside knowledge.\nSCHEME: PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)\nCLAIM: 1,476 करोड़ रुपये से अधिक की राशि भेजी जाएगी\nFIGURE TO CHECK: 1,476 करोड़ रुपये से अधिक\nARTICLE DATE: 2026-10-28\nEVIDENCE:\n[Official page 1] URL: https://www.pib.gov.in/PressNoteDetails.aspx?id=160645&NoteId=160645&ModuleId=3&reg=3&lang=1\nPage date line: Posted On: 30 OCT 2026 3:57PM\nPage retrieved: 2026-11-14\n<<<\n…The PM-KISAN Fund Transfer Journey\n\nThe process begins with farmer registration through the PM-KISAN portal, mobile app, or Common Service Centres (CSCs). State governments verify eligibility and upload beneficiary details to the portal. The system then validates Aadhaar and bank account details and screens out ineligible applicants. After final state approval, the data is sent to the Public Financial Management System (PFMS) for account verification. Eligible records are used to generate fund transfer requests and payment orders. The Department of Agriculture and Farmers Welfare issues…\n>>>\n\nLabels:\nMATCH: the evidence states a figure for the same metric, place and period, and it agrees with the claim at the precision the claim states (\"more than X\" agrees if the official figure is at least X; \"about X\" agrees within 5%).\nMISMATCH: the evidence states a figure for the same metric, place and period, and it does not agree.\nAMBIGUOUS: the evidence states a figure for this or a closely related metric, but it cannot settle the claim: a different definition or scope, a date more than about one month from the time the claim refers to, several official figures that disagree, or an official figure too imprecise to test the claim.\nCANNOT_VERIFY: the evidence does not state a figure for this metric and place.\nAnswer in JSON only, with exactly these keys:\n{\"label\": \"MATCH\" | \"MISMATCH\" | \"AMBIGUOUS\" | \"CANNOT_VERIFY\",\n \"official_figure\": <the official figure from the evidence you compared with the claim, as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <the date that official figure refers to, YYYY-MM-DD, or null>,\n \"evidence_quote\": <the shortest exact phrase from the evidence that states that figure, or null>,\n \"confidence\": <number from 0 to 1: how likely your label is correct>,\n \"reason\": <one sentence>}",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\n  \"label\": \"CANNOT_VERIFY\",\n  \"official_figure\": null,\n  \"as_of_date\": null,\n  \"evidence_quote\": null,\n  \"confidence\": 1.0,\n  \"reason\": \"The provided evidence does not mention any financial figure or amount of money to be transferred.\"\n}",
+       "thoughtSignature": "EmAKXgFpFH0Tm1zW1R8cKdFJ4SjIyWCax5uEphMod2cLQgQYfWf0Cc0g5bRzd195UjMPdD4RqlcA4qG4l7dM3Haetu9BuFuotmf0E5wYm0w2O+QjH9ViTJsK5E5yfmhkOHg="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 654,
+   "candidatesTokenCount": 77,
+   "totalTokenCount": 731,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 654
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "Tcr4auXlJuG6g8UP4vOWkAg"
+ }
+}

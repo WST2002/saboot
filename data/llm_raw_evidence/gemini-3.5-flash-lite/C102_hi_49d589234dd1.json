@@ -1,0 +1,41 @@
+{
+ "claim_id": "C102",
+ "lang": "hi",
+ "evidence_sha256": "d0b7323274f5c8a2d05286a415601ef8849d2a713dc1504d6b61efdfe3663171",
+ "model": "gemini-3.5-flash-lite",
+ "prompt_hash": "49d589234dd1",
+ "called_at": "2026-11-14T20:57:55Z",
+ "http_status": 200,
+ "prompt": "You check a numerical claim about an Indian government scheme against an excerpt from official pages.\nUse only the evidence below. Do not use outside knowledge.\nSCHEME: Pradhan Mantri Awas Yojana (PMAY, Gramin and Urban)\nCLAIM: कुल राशि का 450.1554 करोड़ रुपये केंद्र सरकार की ओर से और 949.4474 करोड़ रुपये राज्य सरकार की ओर से दिया गया है\nFIGURE TO CHECK: 450.1554 करोड़\nARTICLE DATE: 2026-11-11\nEVIDENCE:\n[Official page 1] URL: https://report.pmayg.dord.gov.in/netiay/homereports/HomeCumulativeDataReport.aspx?type=4\nPage date line: none (live dashboard page)\nPage retrieved: 2026-11-14\n<<<\n…KARNATAKA 18.77% - Percentage of Completion against MoRD Target 18.77\nTELANGANA 0% - Percentage of Completion against MoRD Target 0\nLADAKH 97.07% - Percentage of Completion against MoRD Target 97.07\nDownload HomeCumulativeDataRpt in Excel (.xls)\n\nDownload HomeCumulativeDataRpt in PDF (.pdf)\n#SNo state_code RecordDate State Name ShortName MoRD Target Completed Percentage of Completion against MoRD Target\n1 03 14-11-2026 ARUNACHAL PRADESH AR 35937 35591 99.04\n2 04 14-11-2026 ASSAM AS 2962945 2405093 80.72\n3 05 14-11-2026 BIHAR BH 4920346 4335512 87.99\n4 33 14-11-2026 CHHATTISGARH CH 2513351…\n>>>\n\nLabels:\nMATCH: the evidence states a figure for the same metric, place and period, and it agrees with the claim at the precision the claim states (\"more than X\" agrees if the official figure is at least X; \"about X\" agrees within 5%).\nMISMATCH: the evidence states a figure for the same metric, place and period, and it does not agree.\nAMBIGUOUS: the evidence states a figure for this or a closely related metric, but it cannot settle the claim: a different definition or scope, a date more than about one month from the time the claim refers to, several official figures that disagree, or an official figure too imprecise to test the claim.\nCANNOT_VERIFY: the evidence does not state a figure for this metric and place.\nAnswer in JSON only, with exactly these keys:\n{\"label\": \"MATCH\" | \"MISMATCH\" | \"AMBIGUOUS\" | \"CANNOT_VERIFY\",\n \"official_figure\": <the official figure from the evidence you compared with the claim, as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <the date that official figure refers to, YYYY-MM-DD, or null>,\n \"evidence_quote\": <the shortest exact phrase from the evidence that states that figure, or null>,\n \"confidence\": <number from 0 to 1: how likely your label is correct>,\n \"reason\": <one sentence>}",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\n  \"label\": \"CANNOT_VERIFY\",\n  \"official_figure\": null,\n  \"as_of_date\": null,\n  \"evidence_quote\": null,\n  \"confidence\": 1.0,\n  \"reason\": \"The provided evidence does not contain any financial figures related to the central or state government share for the scheme.\"\n}",
+       "thoughtSignature": "EmAKXgFpFH0T5KSfN6kExIwWzQyAaD0bCVIO/5WFTrDu9DucnWCQGG05UnY2PN4PdEjVCJj0xK6ONDU+PZp2W9jS0CTjc0fcCV9jDYq8asXoHTa/OGuR7vwu9OE3RxYM70Q="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 816,
+   "candidatesTokenCount": 81,
+   "totalTokenCount": 897,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 816
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "Usv4aqzhEYiL4-EP98GH2QY"
+ }
+}

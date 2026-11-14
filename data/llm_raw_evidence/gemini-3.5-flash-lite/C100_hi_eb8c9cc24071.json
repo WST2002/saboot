@@ -1,0 +1,41 @@
+{
+ "claim_id": "C100",
+ "lang": "hi",
+ "evidence_sha256": "421a96053824103b2903bc1619addc8de8e50fcf1de9573a91bcf020ea5550c7",
+ "model": "gemini-3.5-flash-lite",
+ "prompt_hash": "eb8c9cc24071",
+ "called_at": "2026-11-14T20:57:37Z",
+ "http_status": 200,
+ "prompt": "You check a numerical claim about an Indian government scheme against an excerpt from official pages.\nUse only the evidence below. Do not use outside knowledge.\nSCHEME: Pradhan Mantri Awas Yojana (PMAY, Gramin and Urban)\nCLAIM: बीएलसी में 60,623 और एएचपी में 15,463 आवासों को स्वीकृति\nFIGURE TO CHECK: 60,623\nARTICLE DATE: 2026-11-06\nEVIDENCE:\n[Official page 1] URL: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2274164&reg=48&lang=1\nPage date line: Posted On: 17 JUN 2026 6:40PM by PIB Delhi\nPage retrieved: 2026-11-14\n<<<\n…The latest sanctions have taken the total number of houses approved under PMAY-U 2.0 to over 16.13 lakh, accelerating the pace of affordable housing delivery with basic amenities across the country. The sanction underscores continued progress towards expanding the access to affordable and dignified housing to poor families of urban India.\n\nThe houses have been sanctioned under Beneficiary Led Construction (BLC) – 1.89 lakh houses and Affordable Housing in Partnership (AHP) verticals – 23,602 houses of PMAY-U 2.0 in 16 States, namely Andhra Pradesh, Assam, Bihar, Chhattisgarh, Gujarat,…\n>>>\n\nLabels:\nMATCH: the evidence states a figure for the same metric, place and period, and it agrees with the claim at the precision the claim states (\"more than X\" agrees if the official figure is at least X; \"about X\" agrees within 5%).\nMISMATCH: the evidence states a figure for the same metric, place and period, and it does not agree.\nAMBIGUOUS: the evidence states a figure for this or a closely related metric, but it cannot settle the claim: a different definition or scope, a date more than about one month from the time the claim refers to, several official figures that disagree, or an official figure too imprecise to test the claim.\nCANNOT_VERIFY: the evidence does not state a figure for this metric and place.\nAnswer in JSON only, with exactly these keys:\n{\"label\": \"MATCH\" | \"MISMATCH\" | \"AMBIGUOUS\" | \"CANNOT_VERIFY\",\n \"official_figure\": <the official figure from the evidence you compared with the claim, as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <the date that official figure refers to, YYYY-MM-DD, or null>,\n \"evidence_quote\": <the shortest exact phrase from the evidence that states that figure, or null>,\n \"confidence\": <number from 0 to 1: how likely your label is correct>,\n \"reason\": <one sentence>}",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\n  \"label\": \"MISMATCH\",\n  \"official_figure\": 189000,\n  \"as_of_date\": \"2026-06-17\",\n  \"evidence_quote\": \"Beneficiary Led Construction (BLC) – 1.89 lakh houses\",\n  \"confidence\": 1,\n  \"as_of_date\": \"2026-06-17\",\n  \"reason\": \"The evidence states that 1.89 lakh (189,000) houses were sanctioned under BLC, which does not match the claimed figure of 60,623.\"\n}",
+       "thoughtSignature": "EmAKXgFpFH0TyXYsxBBgr06tshuCPXCDDiLcIdjs0Md8m+z4pahl65WSFz2hI2sriCg2CgKL8yspEauPwvLWb2XHlrcVIfryPEvIOM1oqJzWSQNowGVZV9v5drulE9d5/T8="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 683,
+   "candidatesTokenCount": 150,
+   "totalTokenCount": 833,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 683
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "QMv4arm0EN2M694P8NPL-Qg"
+ }
+}

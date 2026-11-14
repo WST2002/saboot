@@ -1,0 +1,41 @@
+{
+ "claim_id": "C064",
+ "lang": "en",
+ "evidence_sha256": "0ed563ebd72d4446d85747b466dfcd4d204e633fee0238df4a1e4bc548284671",
+ "model": "gemini-3.5-flash-lite",
+ "prompt_hash": "75dfa860991e",
+ "called_at": "2026-11-14T20:52:17Z",
+ "http_status": 200,
+ "prompt": "You check a numerical claim about an Indian government scheme against an excerpt from official pages.\nUse only the evidence below. Do not use outside knowledge.\nSCHEME: Pradhan Mantri Awas Yojana (PMAY, Gramin and Urban)\nCLAIM: So far more than 42 lakh houses have been built in Bihar under PM Awas Yojana.\nFIGURE TO CHECK: more than 42 lakh houses\nARTICLE DATE: 2026-10-07\nEVIDENCE:\n[Official page 1] URL: https://report.pmayg.dord.gov.in/netiay/homereports/HomeCumulativeDataReport.aspx?type=4\nPage date line: none (live dashboard page)\nPage retrieved: 2026-11-14\n<<<\n…35.94% - Percentage of Completion against MoRD Target 35.94\nKARNATAKA 18.77% - Percentage of Completion against MoRD Target 18.77\nTELANGANA 0% - Percentage of Completion against MoRD Target 0\nLADAKH 97.07% - Percentage of Completion against MoRD Target 97.07\nDownload HomeCumulativeDataRpt in Excel (.xls)\n\nDownload HomeCumulativeDataRpt in PDF (.pdf)\n#SNo state_code RecordDate State Name ShortName MoRD Target Completed Percentage of Completion against MoRD Target\n1 03 14-11-2026 ARUNACHAL PRADESH AR 35937 35591 99.04\n2 04 14-11-2026 ASSAM AS 2962945 2405093 80.72\n3 05 14-11-2026 BIHAR BH 4920346 4335512 87.99\n4 33 14-11-2026 CHHATTISGARH CH 2513351 2082891 82.85\n5 10 14-11-2026 GOA GO 257 243 94.55\n6 11 14-11-2026 GUJARAT GJ 839116 743142 87.99\n7 12 14-11-2026 HARYANA HR 106460 41302 28.14\n8 13 14-11-2026 HIMACHAL PRADESH HP 98209 76542 77.77\n9 14 14-11-2026 JAMMU AND KASHMIR JK 336498 327359 96.76\n10 34 14-11-2026 JHARKHAND JH 1938337 1659061 85.41\n11 16 14-11-2026 KERALA KL 113404 46719 41.2\n12 17 14-11-2026 MADHYA PRADESH MP 5607501 4498943 79.68\n13 18 14-11-2026 MAHARASHTRA MH 4370829 2402353 54.73\n14 20 14-11-2026 MANIPUR MN 108550 56971 28.58\n15 21 14-11-2026 MEGHALAYA…\n>>>\n\nLabels:\nMATCH: the evidence states a figure for the same metric, place and period, and it agrees with the claim at the precision the claim states (\"more than X\" agrees if the official figure is at least X; \"about X\" agrees within 5%).\nMISMATCH: the evidence states a figure for the same metric, place and period, and it does not agree.\nAMBIGUOUS: the evidence states a figure for this or a closely related metric, but it cannot settle the claim: a different definition or scope, a date more than about one month from the time the claim refers to, several official figures that disagree, or an official figure too imprecise to test the claim.\nCANNOT_VERIFY: the evidence does not state a figure for this metric and place.\nAnswer in JSON only, with exactly these keys:\n{\"label\": \"MATCH\" | \"MISMATCH\" | \"AMBIGUOUS\" | \"CANNOT_VERIFY\",\n \"official_figure\": <the official figure from the evidence you compared with the claim, as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <the date that official figure refers to, YYYY-MM-DD, or null>,\n \"evidence_quote\": <the shortest exact phrase from the evidence that states that figure, or null>,\n \"confidence\": <number from 0 to 1: how likely your label is correct>,\n \"reason\": <one sentence>}",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\n  \"label\": \"MATCH\",\n  \"official_figure\": 4335512,\n  \"as_of_date\": \"2026-11-14\",\n  \"evidence_quote\": \"3 05 14-11-2026 BIHAR BH 4920346 4335512 87.99\",\n  \"confidence\": 1,\n  \"reason\": \"The official record lists 4,335,512 completed houses for Bihar, which supports the claim that more than 42 lakh (4.2 million) houses have been built.\"\n}",
+       "thoughtSignature": "EmAKXgFpFH0TdHgqbybQu6ZWwu/s8gECzw86hgZZADC+6p3ldR9TqPUka7zQnDBmMA6LkKIktHTDJ1oVeaBf56ez2bObBXDcyvLVvlB3GH2b0Vj6QN/BLmmL9rOHlOUd6ME="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 1257,
+   "candidatesTokenCount": 152,
+   "totalTokenCount": 1409,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 1257
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "AMr4apG4Ma_Dz7sPvPCM-Ac"
+ }
+}

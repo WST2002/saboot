@@ -1,0 +1,41 @@
+{
+ "claim_id": "C062",
+ "lang": "hi",
+ "evidence_sha256": "44d20a8b3e38f419494c2ce067032530604f0594133c06907b3c5f584300a286",
+ "model": "gemini-3.5-flash-lite",
+ "prompt_hash": "06d094881f31",
+ "called_at": "2026-11-14T20:51:55Z",
+ "http_status": 200,
+ "prompt": "You check a numerical claim about an Indian government scheme against an excerpt from official pages.\nUse only the evidence below. Do not use outside knowledge.\nSCHEME: Jal Jeevan Mission (JJM)\nCLAIM: करीब 55.89 प्रतिशत घर ही नल-जल सुविधा से जुड़ सके हैं\nFIGURE TO CHECK: करीब 55.89 प्रतिशत\nARTICLE DATE: 2026-10-03\nEVIDENCE:\n[Official page 1] URL: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2238852&reg=3&lang=1\nPage date line: Posted On: 12 MAR 2026 3:24PM by PIB Delhi\nPage retrieved: 2026-11-14\n<<<\n…was provided by THE MINISTER OF STATE FOR JAL SHAKTI SHRI V. SOMANNA in a written reply to a question in Lok Sabha today.\n\n****\n\nAMK\n\n(LS USQ 3445)\n\nANNEXURE\n\nStatus of tap water supply across the country as on 03.03.2026\n\nSl. No.\n\nState/ UT\n\nTotal rural HHs as on date\n\nRural HHs with tap water supply\n\nRural HHs without tap water supply\n\nIn No.\n\n%\n\nIn No.\n\n%\n\nA&N Islands\n\n0.62\n\n0.62…\n[...]\n…-\n\n-\n\nGujarat\n\n91.18\n\n91.18\n\n100.00\n\n-\n\n-\n\nHaryana\n\n30.41\n\n30.41\n\n100.00\n\n-\n\n-\n\nHimachal Pradesh\n\n17.09\n\n17.09\n\n100.00\n\n-\n\n-\n\nJammu & Kashmir\n\n19.26\n\n15.64\n\n81.23\n\n3.61\n\n18.77\n\nJharkhand\n\n62.53\n\n34.51\n\n55.18\n\n28.03\n\n44.82\n\nKarnataka\n\n101.31\n\n87.83\n\n86.70\n\n13.48\n\n13.30\n\nKerala\n\n70.77\n\n38.84\n\n54.88\n\n31.93\n\n45.12\n\nLadakh\n\n0.41\n\n0.40\n\n97.97\n\n0.01\n\n2.03\n\nMadhya Pradesh\n\n0.13\n\n0.12\n\n91.45\n\n0.01\n\n8.55…\n>>>\n\n[Official page 2] URL: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2290048&reg=3&lang=1\nPage date line: Posted On: 27 JUL 2026 6:09PM by PIB Delhi\nPage retrieved: 2026-11-14\n<<<\n…THE UNION MINISTER FOR JAL SHAKTI SHRI C.R PATIL in a written reply to a question in Rajya Sabha today.\n\n****\n\nPS/AK\n\n(RS SQ 84)\n\nAnnex\n\nState/ UT-wise details of progress made under JJM\n\n(as on 18.07.2026)\n\n(Number in lakhs)\n\nS. No.\n\nState/ UT\n\nTotal rural HHs\n\nRural HHs with tap water connection as on 15/08/2019\n\nRural HHs provided with tap water supply since Aug, 2019\n\nRural HHs with tap…\n[...]\n…69.74\n\n62.75\n\n83.27\n\n74.93\n\n31.\n\nRajasthan\n\n107.66\n\n11.74\n\n10.91\n\n51.89\n\n48.20\n\n63.63\n\n59.10\n\n32.\n\nWest Bengal\n\n175.51\n\n2.15\n\n1.22\n\n97.61\n\n55.62\n\n99.76\n\n56.84\n\n33.\n\nJharkhand\n\n62.52\n\n3.45\n\n5.52\n\n31.21\n\n49.92\n\n34.66\n\n55.44\n\n34.\n\nKerala\n\n70.76\n\n16.64\n\n23.52\n\n22.38\n\n31.63\n\n39.02\n\n55.14\n\nTotal\n\n19,35.54\n\n3,23.63\n\n16.72\n\n12,65.33\n\n65.37\n\n15,88.96\n\n82.09\n\nDelhi & Chandigarh have no rural…\n>>>\n\nLabels:\nMATCH: the evidence states a figure for the same metric, place and period, and it agrees with the claim at the precision the claim states (\"more than X\" agrees if the official figure is at least X; \"about X\" agrees within 5%).\nMISMATCH: the evidence states a figure for the same metric, place and period, and it does not agree.\nAMBIGUOUS: the evidence states a figure for this or a closely related metric, but it cannot settle the claim: a different definition or scope, a date more than about one month from the time the claim refers to, several official figures that disagree, or an official figure too imprecise to test the claim.\nCANNOT_VERIFY: the evidence does not state a figure for this metric and place.\nAnswer in JSON only, with exactly these keys:\n{\"label\": \"MATCH\" | \"MISMATCH\" | \"AMBIGUOUS\" | \"CANNOT_VERIFY\",\n \"official_figure\": <the official figure from the evidence you compared with the claim, as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <the date that official figure refers to, YYYY-MM-DD, or null>,\n \"evidence_quote\": <the shortest exact phrase from the evidence that states that figure, or null>,\n \"confidence\": <number from 0 to 1: how likely your label is correct>,\n \"reason\": <one sentence>}",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\n  \"label\": \"MATCH\",\n  \"official_figure\": 55.44,\n  \"as_of_date\": \"2026-07-18\",\n  \"evidence_quote\": \"34.66  55.44\",\n  \"confidence\": 0.9,\n  \"reason\": \"The official page lists Kerala's rural households with tap water supply as 55.44% as of 18.07.2026, which is close to the claim of 'करीब 55.89 प्रतिशत'.\"\n}",
+       "thoughtSignature": "EmAKXgFpFH0Tt7DmCUWIVNffxYwxxy7UGqVxsZcFCQbZfMVGYKFvcfBwt92o+4clBQoqUj4O8EHhr3KVqHE8qw5/09JreNVxMTdSbKchGEScSFH0IffWZ2b3zNCHB7F8w4I="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 1452,
+   "candidatesTokenCount": 135,
+   "totalTokenCount": 1587,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 1452
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "6sn4avXJI-3I4t4PpYbPiAQ"
+ }
+}

@@ -12,8 +12,14 @@ Models: gemini-2.5-flash and gemini-2.5-flash-lite (the planned pair) returned H
 and the owner approved them. Free tier only: two models,a fixed pause between calls (below the free per-minute
 limits), backoff on per-minute 429s, and a full stop (partial results kept) on any
 error that mentions billing, payment, a daily quota or an exhausted quota.
+A model that still answers HTTP 5xx (overloaded) after all retries is marked unavailable and
+stops on its own; the other model goes on and the answers already cached are kept.
 The API key is read from .env and sent only in the x-goog-api-key header.
-Usage: python -I scripts/run_verifier.py [--limit N]"""
+--models runs only the named models (e.g. --models gemini-3.8-flash: the cached
+gemini-3.5-flash-lite answers are reused and no lite call is made); the results file is always
+rebuilt from the cache of every model. --dry-run reads no key and makes no call: it writes the
+exact prompts to data/prompts_preview/closed_book/<model>/ and prints how many calls a run would make.
+Usage: python -I scripts/run_verifier.py [--models m1,m2] [--limit N] [--dry-run | --parse-only]"""
 import argparse
 import hashlib
 import json
@@ -23,8 +29,19 @@ import sys
 import threading
 import time
 import urllib.error
+import socket
 import urllib.request
 from datetime import datetime, timezone
+
+# This network resolves IPv6 first and the IPv6 route hangs for ~3 minutes per request; use IPv4 only.
+_getaddrinfo = socket.getaddrinfo
+
+
+def _ipv4_only(host, port, family=0, *args, **kwargs):
+    return _getaddrinfo(host, port, socket.AF_INET, *args, **kwargs)
+
+
+socket.getaddrinfo = _ipv4_only
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW = os.path.join(ROOT, "data", "llm_raw")
@@ -58,7 +75,11 @@ STOP_WORDS = re.compile(r"billing|payment|per ?day|perday|exhausted|limit: 0", r
 
 
 class StopRun(Exception):
-    pass
+    """Stops every model: billing, daily quota, auth or a bad request."""
+
+
+class ModelUnavailable(Exception):
+    """Stops one model: it kept answering HTTP 5xx after every retry."""
 
 
 def read_key():
@@ -100,6 +121,7 @@ def call(model, prompt, key):
 
 
 def call_with_retry(model, prompt, key, log):
+    overloaded = False
     for attempt in range(6):
         try:
             return call(model, prompt, key)
@@ -113,51 +135,110 @@ def call_with_retry(model, prompt, key, log):
             if STOP_WORDS.search(text) or e.code in (400, 401, 403, 429):
                 raise StopRun(f"HTTP {e.code}: {text[:600]}")
             if e.code in (500, 502, 503, 504):
+                overloaded = True
                 wait = 15 * 2 ** attempt
                 log(f"HTTP {e.code}, waiting {wait}s")
                 time.sleep(wait)
                 continue
             raise StopRun(f"HTTP {e.code}: {text[:600]}")
         except (urllib.error.URLError, TimeoutError) as e:
+            overloaded = False
             wait = 15 * 2 ** attempt
             log(f"network error {e}, waiting {wait}s")
             time.sleep(wait)
+    if overloaded:
+        raise ModelUnavailable("HTTP 5xx (overloaded) after 6 attempts")
     raise StopRun("gave up after 6 attempts")
 
 
-def run_model(model, claims, key, stop, counts, lock):
-    os.makedirs(os.path.join(RAW, model), exist_ok=True)
+def prompt_hash(model, prompt):
+    return hashlib.sha256((model + "\n" + prompt).encode("utf-8")).hexdigest()[:12]
+
+
+def run_jobs(model, jobs, key, stop, counts, status, lock):
+    """jobs: (cache path, record fields, prompt). Calls the model for every job not cached yet.
+    status[model] ends as "complete", "unavailable: ..." (this model stopped) or "stopped: ..." (all stopped)."""
     pause = MODELS[model]
 
     def log(msg):
         with lock:
             print(f"[{model}] {msg}", flush=True)
 
+    for path, fields, prompt in jobs:
+        if stop.is_set():
+            status[model] = "stopped: another model hit a stop error"
+            return
+        if os.path.exists(path):
+            continue
+        started = time.time()
+        try:
+            code, resp = call_with_retry(model, prompt, key, log)
+        except StopRun as e:
+            log(f"STOP: {e}")
+            status[model] = f"stopped: {str(e)[:200]}"
+            stop.set()
+            return
+        except ModelUnavailable as e:
+            log(f"UNAVAILABLE, this model stops, partial results kept: {e}")
+            status[model] = f"unavailable: {e}"
+            return
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        record = dict(fields, model=model, prompt_hash=prompt_hash(model, prompt),
+                      called_at=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                      http_status=code, prompt=prompt, response=resp)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(record, f, ensure_ascii=False, indent=1)
+        with lock:
+            counts[model] += 1
+        log(f"{fields['claim_id']} {fields['lang']} done ({counts[model]} calls)")
+        time.sleep(max(0.0, pause - (time.time() - started)))
+    status[model] = "complete"
+
+
+def run_models(models, jobs_by_model, key):
+    """Runs the models in parallel threads; returns (new call counts, status per model, stopped)."""
+    stop, lock = threading.Event(), threading.Lock()
+    counts, status = {m: 0 for m in models}, {}
+    threads = [threading.Thread(target=run_jobs, args=(m, jobs_by_model[m], key, stop, counts, status, lock))
+               for m in models]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+    return counts, status, stop.is_set()
+
+
+def preview(jobs_by_model, out_dir):
+    """Writes every prompt to out_dir/<model>/<file>.txt and returns (cached, to call) per model."""
+    summary = {}
+    for model, jobs in jobs_by_model.items():
+        os.makedirs(os.path.join(out_dir, model), exist_ok=True)
+        cached = 0
+        for path, _, prompt in jobs:
+            cached += os.path.exists(path)
+            name = os.path.splitext(os.path.basename(path))[0] + ".txt"
+            with open(os.path.join(out_dir, model, name), "w", encoding="utf-8") as f:
+                f.write(prompt)
+        summary[model] = (cached, len(jobs) - cached)
+    return summary
+
+
+def parse_models(arg):
+    models = list(MODELS) if not arg else [m.strip() for m in arg.split(",") if m.strip()]
+    unknown = [m for m in models if m not in MODELS]
+    if unknown:
+        raise SystemExit(f"unknown model {unknown}: choose from {', '.join(MODELS)}")
+    return models
+
+
+def closed_book_jobs(model, claims):
+    jobs = []
     for c in claims:
         for lang in LANGS:
-            if stop.is_set():
-                return
             prompt = build_prompt(c, lang)
-            phash = hashlib.sha256((model + "\n" + prompt).encode("utf-8")).hexdigest()[:12]
-            path = cache_path(model, c["id"], lang, phash)
-            if os.path.exists(path):
-                continue
-            started = time.time()
-            try:
-                status, resp = call_with_retry(model, prompt, key, log)
-            except StopRun as e:
-                log(f"STOP: {e}")
-                stop.set()
-                return
-            record = {"model": model, "claim_id": c["id"], "lang": lang, "prompt_hash": phash,
-                      "called_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                      "http_status": status, "prompt": prompt, "response": resp}
-            with open(path, "w", encoding="utf-8") as f:
-                json.dump(record, f, ensure_ascii=False, indent=1)
-            with lock:
-                counts[model] += 1
-            log(f"{c['id']} {lang} done ({counts[model]} calls)")
-            time.sleep(max(0.0, pause - (time.time() - started)))
+            jobs.append((cache_path(model, c["id"], lang, prompt_hash(model, prompt)),
+                         {"claim_id": c["id"], "lang": lang}, prompt))
+    return jobs
 
 
 def parse_answer(resp):
@@ -184,8 +265,7 @@ def write_results(claims):
     for model in MODELS:
         for c in claims:
             for lang in LANGS:
-                prompt = build_prompt(c, lang)
-                phash = hashlib.sha256((model + "\n" + prompt).encode("utf-8")).hexdigest()[:12]
+                phash = prompt_hash(model, build_prompt(c, lang))
                 path = cache_path(model, c["id"], lang, phash)
                 if not os.path.exists(path):
                     continue
@@ -211,27 +291,30 @@ def write_results(claims):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--limit", type=int, default=None, help="only the first N claims (dry run)")
+    ap.add_argument("--limit", type=int, default=None, help="only the first N claims")
+    ap.add_argument("--models", help=f"comma-separated subset of: {', '.join(MODELS)} (default: all)")
     ap.add_argument("--parse-only", action="store_true", help="rebuild the results file from the cache")
+    ap.add_argument("--dry-run", action="store_true", help="write the prompts to data/prompts_preview/closed_book/ and exit")
     args = ap.parse_args()
+    models = parse_models(args.models)
     with open(os.path.join(ROOT, "data", "claims.jsonl"), encoding="utf-8") as f:
         claims = [json.loads(x) for x in f if x.strip()]
     if args.limit:
         claims = claims[:args.limit]
+    jobs = {m: closed_book_jobs(m, claims) for m in models}
+    if args.dry_run:
+        out = os.path.join(ROOT, "data", "prompts_preview", "closed_book")
+        for m, (cached, todo) in preview(jobs, out).items():
+            print(f"[{m}] prompts: {cached + todo}; cached (no call): {cached}; calls a run would make: {todo}")
+        print("prompts written to data/prompts_preview/closed_book/; no key read, no call made")
+        return
+    stopped = False
     if not args.parse_only:
-        key = read_key()
-        stop, lock = threading.Event(), threading.Lock()
-        counts = {m: 0 for m in MODELS}
-        threads = [threading.Thread(target=run_model, args=(m, claims, key, stop, counts, lock)) for m in MODELS]
-        for t in threads:
-            t.start()
-        for t in threads:
-            t.join()
-        print(f"new calls this run: {counts}; stopped early: {stop.is_set()}")
+        counts, status, stopped = run_models(models, jobs, read_key())
+        print(f"new calls this run: {counts}; status: {status}")
     print(f"results rows: {write_results(claims)} -> data/verifier_results.jsonl")
-    if not args.parse_only and stop.is_set():
+    if stopped:
         sys.exit(2)
-
 
 if __name__ == "__main__":
     main()

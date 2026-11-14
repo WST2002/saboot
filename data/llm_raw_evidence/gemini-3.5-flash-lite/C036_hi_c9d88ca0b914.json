@@ -1,0 +1,41 @@
+{
+ "claim_id": "C036",
+ "lang": "hi",
+ "evidence_sha256": "4263707e0935ab3fb52a89765834c70e2f3f4d47bec4b1da5a5a5e444c95f05b",
+ "model": "gemini-3.5-flash-lite",
+ "prompt_hash": "c9d88ca0b914",
+ "called_at": "2026-11-14T20:48:10Z",
+ "http_status": 200,
+ "prompt": "You check a numerical claim about an Indian government scheme against an excerpt from official pages.\nUse only the evidence below. Do not use outside knowledge.\nSCHEME: Jal Jeevan Mission (JJM)\nCLAIM: 81.57% तक पहुंच चुका था\nFIGURE TO CHECK: 81.57%\nARTICLE DATE: 2026-09-06\nEVIDENCE:\n[Official page 1] URL: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2222151&reg=3&lang=1\nPage date line: Posted On: 02 FEB 2026 4:16PM by PIB Delhi\nPage retrieved: 2026-11-14\n<<<\n…more than 12.55 crore additional rural households have been provided with tap water connections under JJM. Thus, as on 28.01.2026, out of 19.36 Crore rural households in the country, more than 15.79 Crore (81.56%) households are reported to have tap water supply in their homes.\n\nThe total estimated outlay of the Mission was Rs. 3.60 lakh Crore out of which Central share was Rs. 2.08 lakh…\n>>>\n\n[Official page 2] URL: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2223839&reg=48&lang=2\nPage date line: Posted On: 05 FEB 2026 4:37PM by PIB Delhi\nPage retrieved: 2026-11-14\n<<<\n…UTs, around 12.59 crore additional rural households have been provided with tap water connections under JJM. Thus, as on 28.01.2026, out of 19.36 crore rural households in the country, more than 15.79 crore (81.57%) households are reported to have tap water supply in their homes.\n\nThe total estimated outlay of the Mission was Rs. 3.60 lakh crore out of which Central share was Rs. 2.08 lakh…\n>>>\n\n[Official page 3] URL: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2222149&reg=3&lang=2\nPage date line: Posted On: 02 FEB 2026 4:14PM by PIB Delhi\nPage retrieved: 2026-11-14\n<<<\n…functional tap water connections to every rural household (at 55 lpcd, BIS:10500 standard). Progress has been substantial: starting from 3.24 crore (16.71%) connections in August 2019, the number has surged to over 15.79 crore (81.57%) households as of January 29, 2026, providing water supply to the majority of rural India. As per data updated by States/UTs on IMIS portal till 31.12.2024,…\n>>>\n\n[Official page 4] URL: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2222320&reg=48&lang=2\nPage date line: प्रविष्टि तिथि: 02 FEB 2026 4:16PM by PIB Delhi\nPage retrieved: 2026-11-14\n<<<\n…के अनुसार, जेजेएम योजना के अंतर्गत 12.55 करोड़ से अधिक ग्रामीण परिवारों को नल जल कनेक्शन प्रदान किया जा चुका है। इस प्रकार, दिनांक 28.01.2026 तक देश के 19.36 करोड़ ग्रामीण परिवारों में से 15.79 करोड़ (81.56%) से अधिक परिवारों को नल जल की आपूर्ति की जा रही है।\n\nजेजेएम का कुल अनुमानित व्यय 3.60 लाख करोड़ रुपये था, जिसमें से केंद्र सरकार का हिस्सा 2.08 लाख करोड़ रुपये था। 2024-25 तक स्वीकृत…\n>>>\n\nLabels:\nMATCH: the evidence states a figure for the same metric, place and period, and it agrees with the claim at the precision the claim states (\"more than X\" agrees if the official figure is at least X; \"about X\" agrees within 5%).\nMISMATCH: the evidence states a figure for the same metric, place and period, and it does not agree.\nAMBIGUOUS: the evidence states a figure for this or a closely related metric, but it cannot settle the claim: a different definition or scope, a date more than about one month from the time the claim refers to, several official figures that disagree, or an official figure too imprecise to test the claim.\nCANNOT_VERIFY: the evidence does not state a figure for this metric and place.\nAnswer in JSON only, with exactly these keys:\n{\"label\": \"MATCH\" | \"MISMATCH\" | \"AMBIGUOUS\" | \"CANNOT_VERIFY\",\n \"official_figure\": <the official figure from the evidence you compared with the claim, as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <the date that official figure refers to, YYYY-MM-DD, or null>,\n \"evidence_quote\": <the shortest exact phrase from the evidence that states that figure, or null>,\n \"confidence\": <number from 0 to 1: how likely your label is correct>,\n \"reason\": <one sentence>}",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\n \"label\": \"MATCH\",\n \"official_figure\": 81.57,\n \"as_of_date\": \"2026-01-29\",\n \"evidence_quote\": \"15.79 crore (81.57%)\",\n \"confidence\": 1.0,\n \"reason\": \"Official page 3 explicitly states that tap water connections have surged to over 15.79 crore (81.57%) households as of January 29, 2026, which fully matches the claim.\"\n}",
+       "thoughtSignature": "EmAKXgFpFH0TETTKXwGShmwdLGM8Vv0di6IHetSh39lh+mw+syxLeSPpwcpy/VdPZg8SP1Ikv6ddrPgARU3dDF6x9sq6b9QpG2lP7Cb95QaaLpX2zcV7c3FsDvt4PCRuNEM="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 1294,
+   "candidatesTokenCount": 126,
+   "totalTokenCount": 1420,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 1294
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "Ccn4aru-Gd7B694P0pf-6Ag"
+ }
+}

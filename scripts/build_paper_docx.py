@@ -1,4 +1,4 @@
-"""Build report/saboot-final.docx on the official Apart template from report/saboot-final.md.
+"""Build report/saboot-final.docx (or <source>.docx) on the official Apart template from report/saboot-final.md.
 
 Keeps the template's styles, title block (title, author table, "With Apart Research",
 abstract box, sprint footnote) and section headings; removes the guidance text and the
@@ -16,10 +16,11 @@ Source markup (report/saboot-final.md):
   FIGURE: path | width in inches | caption
   ```...```          -> monospace block
   PAGEBREAK
-Usage: python -I -X utf8 scripts/build_paper_docx.py"""
+Usage: python -I -X utf8 scripts/build_paper_docx.py [report/<source>.md]  (writes report/<source>.docx)"""
 import copy
 import os
 import re
+import sys
 
 import docx
 from docx.enum.table import WD_TABLE_ALIGNMENT
@@ -37,6 +38,8 @@ DEVANAGARI = "Nirmala UI"
 TEXT_WIDTH = 6.5
 BODY_PT = 10
 INLINE = re.compile(r"(\*\*.+?\*\*|\*.+?\*)")
+# Devanagari text gets its own runs so the Latin text after it keeps the serif font in Word
+DEVANAGARI_RUN = re.compile(r"([ऀ-ॿ]+(?:\s+[ऀ-ॿ]+)*)")
 
 
 def set_fonts(run, name=SERIF, size=None, mono=False):
@@ -66,9 +69,14 @@ def add_runs(par, text, size=None, bold=False, italic=False):
             part, b = part[2:-2], True
         elif part.startswith("*") and part.endswith("*") and len(part) > 2:
             part, i = part[1:-1], True
-        run = par.add_run(part)
-        run.bold, run.italic = b or None, i or None
-        set_fonts(run, size=size)
+        for piece in DEVANAGARI_RUN.split(part):
+            if not piece:
+                continue
+            run = par.add_run(piece)
+            run.bold, run.italic = b or None, i or None
+            set_fonts(run, size=size)
+            if DEVANAGARI_RUN.fullmatch(piece):
+                run.font.complex_script = True
 
 
 def clear_runs(par):
@@ -236,9 +244,9 @@ class Builder:
                     par.paragraph_format.keep_with_next = True
                 tcpr = cell._tc.get_or_add_tcPr()
                 mar = OxmlElement("w:tcMar")
-                for side in ("left", "right"):
+                for side, w in (("top", "30"), ("left", "50"), ("bottom", "30"), ("right", "50")):
                     m = OxmlElement(f"w:{side}")
-                    m.set(qn("w:w"), "50")
+                    m.set(qn("w:w"), w)
                     m.set(qn("w:type"), "dxa")
                     mar.append(m)
                 tcpr.append(mar)
@@ -257,9 +265,9 @@ class Builder:
         par.add_run().add_break(WD_BREAK.PAGE)
 
 
-def build():
+def build(source=SOURCE, out=OUT):
     b = Builder()
-    with open(SOURCE, encoding="utf-8") as f:
+    with open(source, encoding="utf-8") as f:
         lines = f.read().splitlines()
     i = 0
     while i < len(lines):
@@ -305,9 +313,10 @@ def build():
         else:
             b.para(line)
         i += 1
-    b.doc.save(OUT)
-    print(f"wrote {os.path.relpath(OUT, ROOT)}")
+    b.doc.save(out)
+    print(f"wrote {os.path.relpath(out, ROOT)}")
 
 
 if __name__ == "__main__":
-    build()
+    src = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else SOURCE
+    build(src, os.path.splitext(src)[0] + ".docx")

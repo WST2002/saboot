@@ -1,0 +1,41 @@
+{
+ "claim_id": "C097",
+ "lang": "hi",
+ "evidence_sha256": "7f1906e663ca58330fcbb3814662402880a66a9c88ee6e38b865b5f4be0d9ddd",
+ "model": "gemini-3.5-flash-lite",
+ "prompt_hash": "e42dd3708681",
+ "called_at": "2026-11-14T20:57:10Z",
+ "http_status": 200,
+ "prompt": "You check a numerical claim about an Indian government scheme against an excerpt from official pages.\nUse only the evidence below. Do not use outside knowledge.\nSCHEME: Pradhan Mantri Ujjwala Yojana (PMUY)\nCLAIM: प्रधानमंत्री उज्ज्वला योजना के तहत प्रदेश के 1.89 करोड़ से अधिक लाभार्थियों को मुफ्त सिलेंडर रिफिल की सुविधा का लाभ दिया जाएगा\nFIGURE TO CHECK: 1.89 करोड़ से अधिक\nARTICLE DATE: 2026-11-03\nEVIDENCE:\n[Official page 1] URL: https://pmuy.gov.in/index.aspx\nPage date line: none (live dashboard page)\nPage retrieved: 2026-11-14\n<<<\nPradhan Mantri Ujjwala Yojana\nHome\nAbout PMUY\nApply for New Ujjwala PMUY Connection\nPAHAL\nInformation Corner\nGallery\nFAQs\nContact Us\nE-KYC\nSafety Pledge\nEnglish\nहिंदी\nবাংলা\nਪੰਜਾਬੀ\nಕನ್ನಡ\nമലയാളം\nاردو\nతెలుగు\nଓଡ଼ିଆ\nमराठी\nગુજરાતી\nதமிழ்\nঅসমীয়া\nAchievements\n\nTotal Connections Released under\nPradhan Mantri Ujjwala Yojana *as on 23 Sep 2026\n\n105,685,306\n\nConnections released under the\nlatest PMUY extension (25 lakh) *as on 23 Sep 2026\n\n2,442,525\nPMUY Impact\nPMUY Success stories\nCustomer Bytes\n❬\n❭\nGeneral Information on PMUY Scheme\nEligibility Criteria\nDocuments required\nBenefits to customers\nForms\nWhere to Apply for LPG Connection\nFind your nearest LPG distributor\nLocate Us\nLocate Us\nLocate Us\nClick here\nApply for PMUY Connection\nConsumer's\nInformation Corner\nInformation\n& Safety\nRegularization of LPG Connection\nPublic Liability Insurance for LPG Consumers\nLPG Safety Tips\nLPG Safety Video\nState/District wise PMUY details\nBasic Safety Check Campaign\nOnline\nServices\nRefill booking\nNew LPG Connection (Non PMUY)\nPortability (Change Distributor)\nMOPNG E-seva\nForms\nKYC form for New LPG connection\nForms to join PAHAL\nOther Forms\nOther Links\nMinistry of Petroleum and Natural Gas\n>>>\n\nLabels:\nMATCH: the evidence states a figure for the same metric, place and period, and it agrees with the claim at the precision the claim states (\"more than X\" agrees if the official figure is at least X; \"about X\" agrees within 5%).\nMISMATCH: the evidence states a figure for the same metric, place and period, and it does not agree.\nAMBIGUOUS: the evidence states a figure for this or a closely related metric, but it cannot settle the claim: a different definition or scope, a date more than about one month from the time the claim refers to, several official figures that disagree, or an official figure too imprecise to test the claim.\nCANNOT_VERIFY: the evidence does not state a figure for this metric and place.\nAnswer in JSON only, with exactly these keys:\n{\"label\": \"MATCH\" | \"MISMATCH\" | \"AMBIGUOUS\" | \"CANNOT_VERIFY\",\n \"official_figure\": <the official figure from the evidence you compared with the claim, as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <the date that official figure refers to, YYYY-MM-DD, or null>,\n \"evidence_quote\": <the shortest exact phrase from the evidence that states that figure, or null>,\n \"confidence\": <number from 0 to 1: how likely your label is correct>,\n \"reason\": <one sentence>}",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\n  \"label\": \"CANNOT_VERIFY\",\n  \"official_figure\": null,\n  \"as_of_date\": null,\n  \"evidence_quote\": null,\n  \"confidence\": 1,\n  \"reason\": \"The provided evidence does not mention the free cylinder refill figure of 1.89 crore or more for beneficiaries in the state.\"\n}",
+       "thoughtSignature": "EmAKXgFpFH0TgYMh/4doDLkLYnx2BUCP+dMTYiUTNYSj7XZSYhhpr0oK/dZ2/K7tmnf5AuJOnRXp18uYYELyjdKyUt8A+XXN98D/1AlEsK2ZU60EzI+n8/A6NX9MZ8+nOtg="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 855,
+   "candidatesTokenCount": 84,
+   "totalTokenCount": 939,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 855
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "Jcv4avLcE4fg694PnuWikAE"
+ }
+}

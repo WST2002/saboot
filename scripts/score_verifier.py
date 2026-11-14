@@ -217,7 +217,7 @@ def mcnemar_exact(b, c):
     return min(1.0, 2 * p)
 
 
-def svg_fig(path, panels, title):
+def svg_fig(path, panels, title, cats=VERDICTS, colors=VERDICT_COLORS, legend="Model verdict:"):
     """Horizontal 100% stacked bars of verdicts. panels: [(panel title, [(row name, Counter)])]."""
     width, left, right, bar_h, gap = 720, 230, 60, 20, 8
     plot_w = width - left - right
@@ -229,11 +229,11 @@ def svg_fig(path, panels, title):
         for name, cnt in rows:
             n = sum(cnt.values())
             x = left
-            segs = [(v, cnt[v]) for v in VERDICTS if cnt[v]]
+            segs = [(v, cnt[v]) for v in cats if cnt[v]]
             for i, (v, k) in enumerate(segs):
                 w = plot_w * k / n
                 inner = w - (2 if i < len(segs) - 1 else 0)
-                body.append(f'<rect x="{x:.1f}" y="{y}" width="{max(inner, 0.5):.1f}" height="{bar_h}" fill="{VERDICT_COLORS[v]}"/>')
+                body.append(f'<rect x="{x:.1f}" y="{y}" width="{max(inner, 0.5):.1f}" height="{bar_h}" fill="{colors[v]}"/>')
                 if w >= 14:
                     ink = "#ffffff" if v != "CANNOT_VERIFY" else INK
                     body.append(f'<text x="{x + w / 2:.1f}" y="{y + 14}" font-size="11" text-anchor="middle" fill="{ink}">{k}</text>')
@@ -246,10 +246,10 @@ def svg_fig(path, panels, title):
             body.insert(0, f'<line x1="{gx:.1f}" y1="{top - 4}" x2="{gx:.1f}" y2="{y - gap + 4}" stroke="{GRID}" stroke-width="1"/>')
             body.append(f'<text x="{gx:.1f}" y="{y + 8}" font-size="10" text-anchor="middle" fill="{INK_2}">{t}%</text>')
         y += 36
-    body.append(f'<text x="{left - 8}" y="{y}" font-size="12" text-anchor="end" fill="{INK}">Model verdict:</text>')
+    body.append(f'<text x="{left - 8}" y="{y}" font-size="12" text-anchor="end" fill="{INK}">{escape(legend)}</text>')
     lx = left
-    for v in VERDICTS:
-        body.append(f'<rect x="{lx}" y="{y - 10}" width="12" height="12" rx="2" fill="{VERDICT_COLORS[v]}"/>')
+    for v in cats:
+        body.append(f'<rect x="{lx}" y="{y - 10}" width="12" height="12" rx="2" fill="{colors[v]}"/>')
         body.append(f'<text x="{lx + 17}" y="{y}" font-size="12" fill="{INK}">{v}</text>')
         lx += 40 + 7.5 * len(v)
     height = y + 18
