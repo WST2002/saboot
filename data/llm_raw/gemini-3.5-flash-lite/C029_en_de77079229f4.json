@@ -1,0 +1,40 @@
+{
+ "model": "gemini-3.5-flash-lite",
+ "claim_id": "C029",
+ "lang": "en",
+ "prompt_hash": "de77079229f4",
+ "called_at": "2026-11-14T13:21:53Z",
+ "http_status": 200,
+ "prompt": "You check numerical claims about Indian government schemes against official statistics.\nSCHEME: Pradhan Mantri Awas Yojana (PMAY, Gramin and Urban)\nCLAIM: The first cabinet resolved to sanction and build more than 18 lakh PM Awas houses for eligible families.\nARTICLE DATE: 2026-08-23\nAnswer in JSON only, with exactly these keys:\n{\"verdict\": \"SUPPORTED\" | \"CONTRADICTED\" | \"CANNOT_VERIFY\",\n \"source_title\": <title of the official source you rely on, or null>,\n \"source_url\": <official URL you rely on, or null>,\n \"official_figure\": <the official number as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <date the official figure refers to, YYYY-MM-DD, or null>,\n \"confidence\": <number from 0 to 1: how likely your verdict is correct>,\n \"reason\": <one sentence>}\nSUPPORTED means an official source states a figure that agrees with the claim. CONTRADICTED means an official source states a different figure for the same metric, place and period. If you are not certain an official source states this exact figure, answer CANNOT_VERIFY with null source and figure. Do not guess a URL.",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\"verdict\": \"SUPPORTED\", \"source_title\": \"Cabinet Decisions on Pradhan Mantri Awas Yojana\", \"source_url\": \"https://pib.gov.in/PressReleasePage.aspx?PRID=2024888\", \"official_figure\": 1800000, \"as_of_date\": \"2024-06-10\", \"confidence\": 0.95, \"reason\": \"The official Press Information Bureau release states that the Union Cabinet resolved to construct 3 crore houses under PMAY, including 18 lakh houses for eligible rural and urban families in its first cabinet meeting.\"}",
+       "thoughtSignature": "EmAKXgFpFH0TZUfWspTIGKkLYiA8KqOff37naWZNdoPpt00fFAvGaUSQLdhjJMl5QAGpOpKjz5Rr+XhJ4JCKp2x4MSMIIHgEDY6ebl5MHfiuFnN3+cZzYT7UmHwYKH2WR2w="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 324,
+   "candidatesTokenCount": 144,
+   "totalTokenCount": 468,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 324
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "cWD4aorRJPj7jNAPvu6igA0"
+ }
+}

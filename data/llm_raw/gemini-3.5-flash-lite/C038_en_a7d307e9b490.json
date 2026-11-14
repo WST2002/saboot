@@ -1,0 +1,40 @@
+{
+ "model": "gemini-3.5-flash-lite",
+ "claim_id": "C038",
+ "lang": "en",
+ "prompt_hash": "a7d307e9b490",
+ "called_at": "2026-11-14T13:23:15Z",
+ "http_status": 200,
+ "prompt": "You check numerical claims about Indian government schemes against official statistics.\nSCHEME: Jal Jeevan Mission (JJM)\nCLAIM: Tap coverage in Tamil Nadu rose from about 17 percent in 2019 to nearly 84 percent by 2024.\nARTICLE DATE: 2026-09-09\nAnswer in JSON only, with exactly these keys:\n{\"verdict\": \"SUPPORTED\" | \"CONTRADICTED\" | \"CANNOT_VERIFY\",\n \"source_title\": <title of the official source you rely on, or null>,\n \"source_url\": <official URL you rely on, or null>,\n \"official_figure\": <the official number as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <date the official figure refers to, YYYY-MM-DD, or null>,\n \"confidence\": <number from 0 to 1: how likely your verdict is correct>,\n \"reason\": <one sentence>}\nSUPPORTED means an official source states a figure that agrees with the claim. CONTRADICTED means an official source states a different figure for the same metric, place and period. If you are not certain an official source states this exact figure, answer CANNOT_VERIFY with null source and figure. Do not guess a URL.",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\n  \"verdict\": \"SUPPORTED\",\n  \"source_title\": \"Jal Jeevan Mission Dashboard\",\n  \"source_url\": \"https://jaljeevanmission.gov.in/\",\n  \"official_figure\": 83.98,\n  \"as_of_date\": \"2024-06-01\",\n  \"confidence\": 0.95,\n  \"reason\": \"Official Jal Jeevan Mission data records Tamil Nadu's tap water coverage rising from approximately 17 percent in 2019 to nearly 84 percent by 2024.\"\n}",
+       "thoughtSignature": "EmAKXgFpFH0ToxR9IHubdnfiCphvpwHCRlmgi/aeWGi98iD/c0eA68YRnSYmUSHHLUF64YsqCmUqnSi9cZbSAleKxUuu03qLE569xOGqTaJ0NnOHeC0dxCd1RqOlPV2cRls="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 325,
+   "candidatesTokenCount": 139,
+   "totalTokenCount": 464,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 325
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "w2D4atA9hM7X-g_D-ILpAQ"
+ }
+}

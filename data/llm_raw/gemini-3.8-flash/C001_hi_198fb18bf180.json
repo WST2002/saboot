@@ -1,0 +1,41 @@
+{
+ "model": "gemini-3.8-flash",
+ "claim_id": "C001",
+ "lang": "hi",
+ "prompt_hash": "198fb18bf180",
+ "called_at": "2026-11-14T13:47:31Z",
+ "http_status": 200,
+ "prompt": "You check numerical claims about Indian government schemes against official statistics.\nSCHEME: PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)\nCLAIM: 3.15 लाख करोड़ रुपये का प्रावधान किया गया है\nARTICLE DATE: 2026-08-02\nAnswer in JSON only, with exactly these keys:\n{\"verdict\": \"SUPPORTED\" | \"CONTRADICTED\" | \"CANNOT_VERIFY\",\n \"source_title\": <title of the official source you rely on, or null>,\n \"source_url\": <official URL you rely on, or null>,\n \"official_figure\": <the official number as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <date the official figure refers to, YYYY-MM-DD, or null>,\n \"confidence\": <number from 0 to 1: how likely your verdict is correct>,\n \"reason\": <one sentence>}\nSUPPORTED means an official source states a figure that agrees with the claim. CONTRADICTED means an official source states a different figure for the same metric, place and period. If you are not certain an official source states this exact figure, answer CANNOT_VERIFY with null source and figure. Do not guess a URL.",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\n \"verdict\": \"CANNOT_VERIFY\",\n \"source_title\": null,\n \"source_url\": null,\n \"official_figure\": null,\n \"as_of_date\": null,\n \"confidence\": 0.8,\n \"reason\": \"No definitive official release directly confirms the exact figure of 3.15 lakh crore rupees as cumulative disbursement or budgetary provision for PM-KISAN.\"\n}",
+       "thoughtSignature": "ErMKCrAKAWkUfRMCmQs+qQwF7usEe7GDieov/B9ICfGrhXwHBb8M0AbfE2kbM72vTd7T/KkhnbqmDPBAzyHn8R8wshVh7EjzAyb/L3T59onKuHwUuugVtPLmN0WikXZfeT3nmnP9Iph4Efc+VNwAL/vjaP8WnfprYhm5g+ukxRvhHTiGENit9Y1mn4n6RqxLJL5u+I/4MUDWQ3P/tCFZ23YsYCbgAeMClOjOlDZoRAU+CVAB7GSQevnt6Yq60hpFzD0xFEfGeu/jOeGK4VCLL98EhIWmGY5229Ha90DWBkWvegl8UJI+9LGNFCdVyRrDgfE+HywyGvaF+b51r7hcjaEPGqDaXLdoU2ZU0+AN3+JZrlNShLKW9khu+Ou4ArU7KKJE0iGs+DWBm/8Ng2nAtRWEDA1CDzO2JRj04JT3iLd7xMpvbzRfwa++lhnkbExm/9zsMTqh+NpuoyMmWIJDcJzewYwVJO2Uv8YjEWshLzoB9VnFqxmrlEXZkgJC/qdgDI9AFTYr8vqySqguz8txVtttyXd9iootxtpk7rN5ArjKo3xAOlHoMVE/72TqbyZXacvxW4niP3+FsZugyRaTjr2HcVDwTTPbOIXSJiYGlyDtCxD3OoMBFhKICEHch1BQu5CeUNcvklCaaF1RuWO+q4f7Mex6yLcO1PdviNd9RVvuPpB0QPcNsZOKpU9Jj5h9pdmWToDEHrc4FUzYni8dKkzdAX5tVMV/w87GZKuRuqVEBmZ7GeDsZC5sJ+vZLoLZNFMdw5yz5ArMuA1wzVlFqfhwe8lNIcbguK3OihY0HZvO7Naw0TbCnlFU6ulCFMX6WkflYXyFM94kr5p9dtl6rng+VdzKFZV/T5sU4ZDf0N+dM6zfrH6JCyzanbqxJ2ghSO9LILm6/WXuvfDzSeD/xfUPmXjWswivCZ1rWyl1z4EUZFavEfzpH5Tt32BfxoWBfnNd0vKI4oo/Mqv1CccfXLuDBjt588FWcN3O3pfwk1H07m1yDirRz1R/8VtDaFUEb8Ub6eZXnOveJ7ud4M4qkAp5CoaeApQy6P+cLj7zJls2BpfwTaUGQWVUOy/54LphgHZEHlwRz3qD5oXkVEjwRrddPUllbHIUNSPuLMASrju5zPnH3xaiUur6KDXfNRjEP1NoflvnC6RGjt5tyt4W+j648jrotaav55xAQWOguuV3bsVygQhc5B5vzLC26k5SpsRHtHWxJy7nKgvoz/LAS3TRFPFnaQAtbAOFJVU3ff5q3KLNWlxfsBhdB91FW653hyBuV8wAHNM+KZKafoHna+O6Aq5ONFecvRjBLW1Xez8a5EQpEbhglYT4l59c2OeW0p0ZP5XJqk/KfLo4WvA/u+PZSPqJe+JD5L5RzllGTj3keIxfyLDFQHZPzqqL11D/ePPAaZwdk3wn4s6oAD8qw5HDogVXMm7AQZueOJ194kwwZkr9eYS6j65kHfWmHaJcj7vLeZvAyV/VaGPyTAkgz8C6xD9kVtN5Y4wDu11rEcOLZf3P54tyUDErAgm7L0Xn+SZEbGG0KXCVfNc4BehzcX7CmlLkJg46w01JCxovrWdNNN6odWvH09wrrWUPpK+HV4yjjZqnwcPDO1jymDZcX8ZuzlsW6hs7DOib9hqx/cJ8yvYQNTLQd79ZL8VCwnrSliq9zCoTRDOX7TUGmyBFVCjvw3gYf/snt5NXV5qnepDuxHiHw5L6Lb3Q1cLXva1QI0x4VmbD8G8xmr3UFsKG+xM2H59+O/CjCh/L9vfgTqB58WAGp0M="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 314,
+   "candidatesTokenCount": 93,
+   "totalTokenCount": 736,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 314
+    }
+   ],
+   "thoughtsTokenCount": 329,
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.8-flash",
+  "responseId": "H2b4aobnGM7E694PosCN4Ag"
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "model": "gemini-3.5-flash-lite",
+ "claim_id": "C072",
+ "lang": "hi",
+ "prompt_hash": "bdaec8055949",
+ "called_at": "2026-11-14T13:28:45Z",
+ "http_status": 200,
+ "prompt": "You check numerical claims about Indian government schemes against official statistics.\nSCHEME: PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)\nCLAIM: बिहार के 73 लाख से अधिक किसान परिवारों के खातों में 1,476 करोड़ रुपये से अधिक की राशि भेजी जाएगी\nARTICLE DATE: 2026-10-28\nAnswer in JSON only, with exactly these keys:\n{\"verdict\": \"SUPPORTED\" | \"CONTRADICTED\" | \"CANNOT_VERIFY\",\n \"source_title\": <title of the official source you rely on, or null>,\n \"source_url\": <official URL you rely on, or null>,\n \"official_figure\": <the official number as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <date the official figure refers to, YYYY-MM-DD, or null>,\n \"confidence\": <number from 0 to 1: how likely your verdict is correct>,\n \"reason\": <one sentence>}\nSUPPORTED means an official source states a figure that agrees with the claim. CONTRADICTED means an official source states a different figure for the same metric, place and period. If you are not certain an official source states this exact figure, answer CANNOT_VERIFY with null source and figure. Do not guess a URL.",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\"verdict\": \"CANNOT_VERIFY\", \"source_title\": null, \"source_url\": null, \"official_figure\": null, \"as_of_date\": null, \"confidence\": 1.0, \"reason\": \"No official government data or press release for this specific future or current PM-Kisan installment date in Bihar is available in the knowledge base to verify the claim.\"}",
+       "thoughtSignature": "EmAKXgFpFH0Tahv5zp4GqNubqFxxU1/mCO0xjUoSEBDMMxQt4ZPrbRCICds1sc6DWbfpNFDbAiSbgmA8tNE2UciXu/DU384JZ62S4lvmQRJmmIzfbHy8d2H7dveV51KNfKE="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 328,
+   "candidatesTokenCount": 86,
+   "totalTokenCount": 414,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 328
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "DWL4aq_3FN2M694P8NPL-Qg"
+ }
+}

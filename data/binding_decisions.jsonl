@@ -1,0 +1,102 @@
+{"id": "C001", "decision": "bound", "evidence_id": "E02", "key": "outlay_2026_27_to_2030_31", "reason": "Cabinet release gives the same Rs 3.15 lakh crore outlay for 2026-27 to 2030-31."}
+{"id": "C002", "decision": "bound", "evidence_id": "E02", "key": "cumulative_amount_inst1_23", "reason": "Cabinet release (31 Jul 2026) states cumulative transfers of more than Rs 4.47 lakh crore over 23 instalments."}
+{"id": "C003", "decision": "ambiguous", "evidence_id": "E02", "key": "inst23_beneficiaries", "ambiguity": "conflicting official figures", "reason": "PIB gave 9.44 crore farmers on release day (E03, 20 Jun) and 9.49 crore in the 31 Jul cabinet release (E02); the claim matches the later figure only."}
+{"id": "C004", "decision": "ambiguous", "evidence_id": "E02", "key": "inst23_amount", "ambiguity": "conflicting official figures", "reason": "PIB gave Rs 18,880 crore on release day (E03) and Rs 18,984 crore on 31 Jul (E02); the claim matches the later figure only."}
+{"id": "C005", "decision": "unbindable", "reason": "Opposition figure for July households worked; no PIB release or Parliament answer with July 2026 household counts found; NREGA MIS monthly report (postback form) not queried."}
+{"id": "C006", "decision": "unbindable", "reason": "No official July 2026 person-days figure found on PIB; latest PIB factsheet gives only cumulative person-days to 24 Sep 2026 (31.69 crore); NREGA MIS not queried."}
+{"id": "C007", "decision": "unbindable", "reason": "No official July 2025 MGNREGS monthly person-days figure found on PIB; NREGA MIS not queried."}
+{"id": "C008", "decision": "unbindable", "reason": "Derived year-on-year fall; neither monthly input found in an official source."}
+{"id": "C009", "decision": "unbindable", "reason": "PIB search for the July 2026 written reply (PRID 2288992/2288994 listed) did not surface a 99.5% figure; reply text not readable (PIB 403)."}
+{"id": "C010", "decision": "unbindable", "reason": "No official 'person-days by 22 July' figure found on PIB."}
+{"id": "C011", "decision": "unbindable", "reason": "No official Rs 1.52 lakh crore annual provision found; PIB figures found are central interim allocations (Rs 95,692.31 crore BE central share; Rs 93,841 crore allocated as of 24 Sep 2026), a different metric. Claim also labels it FY 2025-26, before the scheme existed."}
+{"id": "C012", "decision": "bound", "evidence_id": "E16", "key": "mgnregs_budget_provision", "reason": "PIB explainer: FY 2025-26 BE for MGNREGS Rs 86,000 crore."}
+{"id": "C013", "decision": "unbindable", "reason": "August 2026 Lok Sabha reply on PM-JAY fraud/penalties not found via PIB search; older PIB release has different, earlier totals."}
+{"id": "C014", "decision": "unbindable", "reason": "Same Aug 2026 reply not found; no official Rs 676.14 crore figure located."}
+{"id": "C015", "decision": "unbindable", "reason": "No official FY 2025-26 new-card count found on PIB."}
+{"id": "C016", "decision": "unbindable", "reason": "No official FY 2025-26 admissions count found on PIB."}
+{"id": "C017", "decision": "unbindable", "reason": "No official Rs 8,438.27 crore release figure found; closest PIB number (Rs 8,383.97 crore 'authorized', July 2026 update) is a different metric."}
+{"id": "C018", "decision": "unbindable", "reason": "State-wise FY admissions table from the cited reply not found."}
+{"id": "C019", "decision": "unbindable", "reason": "State-wise central release table from the cited reply not found."}
+{"id": "C020", "decision": "bound", "evidence_id": "E05", "key": "covered_families", "reason": "PIB launch release for West Bengal (8 Jun 2026) puts the approved beneficiary base at about 1.43 crore families; this is the scheme's rollout parameter, so the 31-day stock rule is not applied.", "confidence": 1}
+{"id": "C021", "decision": "unbindable", "reason": "No official West Bengal e-KYC count found."}
+{"id": "C022", "decision": "unbindable", "reason": "Article cites a Lok Sabha reply of 20 Mar 2026; not located via PIB search; sansad.in search is JavaScript-only and was not queried."}
+{"id": "C023", "decision": "unbindable", "reason": "Same Lok Sabha reply (20 Mar 2026) not located."}
+{"id": "C024", "decision": "unbindable", "reason": "No official Bihar covered-families figure located."}
+{"id": "C025", "decision": "unbindable", "reason": "Same Lok Sabha reply (20 Mar 2026) not located."}
+{"id": "C026", "decision": "unbindable", "reason": "Same Lok Sabha reply (20 Mar 2026) not located."}
+{"id": "C027", "decision": "ambiguous", "evidence_id": "E04", "key": "empanelled_hospitals_lower_bound", "ambiguity": "official figure imprecise", "reason": "PIB gives only 'over 38,000' empanelled hospitals (31 Aug 2026); cannot test 'about 38,600'."}
+{"id": "C028", "decision": "ambiguous", "evidence_id": "E11", "key": "pmayg_completed_chhattisgarh", "ambiguity": "definition and period", "reason": "Article says the 11 lakh includes old pending, PM-JANMAN and state-scheme houses, counted from Dec 2023; PMAY-G report gives only cumulative completions (20.83 lakh on 14 Nov 2026), no Dec 2023 baseline."}
+{"id": "C029", "decision": "unbindable", "reason": "State cabinet resolution (Dec 2023) to sanction 18 lakh houses; no central dated figure for this resolution found."}
+{"id": "C030", "decision": "bound", "evidence_id": "E10", "key": "pmayg_completed_in_fy_chhattisgarh", "reason": "PIB 7 Aug 2026 annexure: Chhattisgarh 5,92,508 houses completed in FY 2025-26."}
+{"id": "C031", "decision": "ambiguous", "evidence_id": "E11", "key": "pmayg_completed_chhattisgarh", "ambiguity": "period gap", "reason": "Only official Chhattisgarh cumulative completion found is the live report of 14 Nov 2026 (20,82,891), 83 days after the claim; no Wayback snapshot near Aug 2026."}
+{"id": "C032", "decision": "ambiguous", "evidence_id": "E09", "key": "tap_connected_households", "ambiguity": "period gap", "reason": "Latest readable official Jharkhand count is 34.51 lakh as on 3 Mar 2026 (184 days before the claim); dashboard is JavaScript-only."}
+{"id": "C033", "decision": "unbindable", "reason": "No official Jharkhand FY 2023-24 connection count found in the sources searched."}
+{"id": "C034", "decision": "bound", "evidence_id": "E08", "key": "tap_connected_households_at_launch", "reason": "PIB: 3.23 crore rural households had tap connections at the mission's 2019 launch."}
+{"id": "C035", "decision": "bound", "evidence_id": "E07", "key": "tap_connected_households", "reason": "PIB 2 Feb 2026: more than 15.79 crore households as on 28 Jan 2026."}
+{"id": "C036", "decision": "ambiguous", "evidence_id": "E07", "key": "tap_coverage_pct", "ambiguity": "conflicting official figures", "reason": "PIB English release of 2 Feb 2026 says 81.56%; PIB release of 5 Feb and Hindi 2 Feb release say 81.57% for the same date and count."}
+{"id": "C037", "decision": "unbindable", "reason": "Chief Minister's statement; no official West Bengal card count found."}
+{"id": "C038", "decision": "unbindable", "reason": "Figure is from a CAG audit (not in the source list); vague period ('2024'); JJM dashboard JavaScript-only."}
+{"id": "C039", "decision": "bound", "evidence_id": "E13", "key": "pmayu2_sanctioned", "reason": "PIB 6th CSMC release (Feb 2026): total PMAY-U 2.0 sanctions over 13.61 lakh."}
+{"id": "C040", "decision": "bound", "evidence_id": "E14", "key": "pmayu2_sanctioned_increment", "reason": "PIB 7th CSMC (17 Jun 2026): 2.13 lakh houses sanctioned."}
+{"id": "C041", "decision": "bound", "evidence_id": "E12", "key": "pmayu_total_sanctioned", "reason": "PIB: as on 9 Aug 2026, 1.25 crore houses sanctioned across PMAY-U and PMAY-U 2.0."}
+{"id": "C042", "decision": "bound", "evidence_id": "E15", "key": "interim_allocation_2026_27", "reason": "PIB annexure (as on 16 Jul 2026): Chhattisgarh interim allocation 3354.85 crore."}
+{"id": "C043", "decision": "unbindable", "reason": "PM's '60 crore people covered'; no dated 2026 official coverage count found (PIB 8th-anniversary note gives cards and admissions only)."}
+{"id": "C044", "decision": "ambiguous", "evidence_id": "E04", "key": "ayushman_cards_people", "ambiguity": "definition", "reason": "PIB counts 'over 48.51 crore people holding Ayushman cards' (21 Sep 2026); claim counts cards. Under rule 3 this is a definition clash; if read as the same metric it is a strict mismatch (48.51 < 48.54)."}
+{"id": "C045", "decision": "ambiguous", "evidence_id": "E04", "key": "hospital_admissions_cumulative", "ambiguity": "definition", "reason": "Claim counts people treated; PIB counts 13.25 crore admissions (one person can have several)."}
+{"id": "C046", "decision": "ambiguous", "evidence_id": "E04", "key": "empanelled_hospitals_lower_bound", "ambiguity": "official figure imprecise", "reason": "PIB says 'over 38,000' hospitals; cannot test 'over 39,000'."}
+{"id": "C047", "decision": "bound", "evidence_id": "E04", "key": "admissions_amount", "reason": "PIB: admissions worth Rs 2.03 lakh crore (to 31 Aug 2026)."}
+{"id": "C048", "decision": "unbindable", "reason": "Chhattisgarh state row of PIB JJM annexures not readable via search extract; dashboard JavaScript-only."}
+{"id": "C049", "decision": "unbindable", "reason": "Figure from CAG report (March 2024); not in the source list; no PIB figure for Chhattisgarh at March 2024 found."}
+{"id": "C050", "decision": "ambiguous", "evidence_id": "E10", "key": "pmayg_target", "ambiguity": "period gap and conflicting official figures", "reason": "Claim stated 'as of now' on 28 Sep; PIB gives 4.18 crore as of 3 Aug (56 days earlier) while the live MoRD report shows a 4.05 crore target on 14 Nov."}
+{"id": "C051", "decision": "ambiguous", "evidence_id": "E10", "key": "pmayg_sanctioned", "ambiguity": "period gap", "reason": "PIB 3.91 crore as of 3 Aug (56 days before); live report 3.92 crore on 14 Nov (47 days after); no figure within 31 days."}
+{"id": "C052", "decision": "ambiguous", "evidence_id": "E10", "key": "pmayg_completed", "ambiguity": "period gap", "reason": "PIB 3.12 crore as of 3 Aug; live report 3.22 crore on 14 Nov. The claimed 3.11 crore is below the August official figure although completions are cumulative, and the same article also gives 3.12 crore."}
+{"id": "C053", "decision": "bound", "evidence_id": "E10", "key": "pmayg_sanctioned_in_fy", "reason": "PIB 7 Aug 2026: 32.47 lakh sanctioned in FY 2025-26."}
+{"id": "C054", "decision": "bound", "evidence_id": "E10", "key": "pmayg_completed_in_fy", "reason": "PIB 7 Aug 2026: 26.57 lakh completed in FY 2025-26."}
+{"id": "C055", "decision": "bound", "evidence_id": "E10", "key": "pmayg_completed", "reason": "PIB: 3.12 crore completed as of 3 Aug 2026 (claim dates it to 3 Aug)."}
+{"id": "C056", "decision": "bound", "evidence_id": "E10", "key": "pmayg_sanctioned", "reason": "PIB: 3.91 crore sanctioned as of 3 Aug 2026."}
+{"id": "C057", "decision": "unbindable", "reason": "PIB has the Rs 12,000 crore approval for FY 2025-26 only; no FY 2026-27 Rs 12,001 crore approval found (English and Hindi PIB searched)."}
+{"id": "C058", "decision": "bound", "evidence_id": "E06", "key": "total_connections", "reason": "pmuy.gov.in: 105,685,306 connections as on 23 Sep 2026 (8 days before the article)."}
+{"id": "C059", "decision": "unbindable", "reason": "No official Apr-Sep 2026 Jharkhand new-connection count found; dashboard JavaScript-only."}
+{"id": "C060", "decision": "ambiguous", "evidence_id": "E09", "key": "rural_households_total", "ambiguity": "period gap", "reason": "Latest readable official Jharkhand total is 62.53 lakh as on 3 Mar 2026 (214 days earlier)."}
+{"id": "C061", "decision": "ambiguous", "evidence_id": "E09", "key": "tap_connected_households", "ambiguity": "period gap", "reason": "Official 34.51 lakh as on 3 Mar 2026 (214 days earlier)."}
+{"id": "C062", "decision": "ambiguous", "evidence_id": "E09", "key": "tap_coverage_pct", "ambiguity": "period gap", "reason": "Official 55.18% as on 3 Mar 2026; a 18 Jul 2026 PIB table appears to show 55.44 for Jharkhand but its column headers were not readable."}
+{"id": "C063", "decision": "ambiguous", "evidence_id": "E08", "key": "tap_coverage_pct", "ambiguity": "period gap", "reason": "Latest dated national figure found is 82.09% as on 18 Jul 2026 (77 days before the article); dashboard is JavaScript-only."}
+{"id": "C064", "decision": "ambiguous", "evidence_id": "E11", "key": "pmayg_completed_bihar", "ambiguity": "period gap and definition", "reason": "Live PMAY-G report gives Bihar 43.36 lakh completed on 14 Nov 2026 (38 days after the claim); claim says 'PM Awas Yojana' without specifying the rural scheme."}
+{"id": "C065", "decision": "unbindable", "reason": "Rajasthan row of PIB JJM annexures not readable via search extract (garbled); dashboard JavaScript-only."}
+{"id": "C066", "decision": "unbindable", "reason": "Same as C065."}
+{"id": "C067", "decision": "unbindable", "reason": "Same as C065; an 18 Jul 2026 table appears to end in 59.10 for Rajasthan but headers were not readable, so not used."}
+{"id": "C068", "decision": "ambiguous", "evidence_id": "E08", "key": "tap_coverage_pct", "ambiguity": "period gap", "reason": "Latest dated national figure found is 82.09% as on 18 Jul 2026 (88 days before the article)."}
+{"id": "C069", "decision": "unbindable", "reason": "Uttar Pradesh state row not readable; dashboard JavaScript-only."}
+{"id": "C070", "decision": "unbindable", "reason": "Bihar state row not readable; dashboard JavaScript-only."}
+{"id": "C071", "decision": "unbindable", "reason": "pmuy.gov.in state-wise numbers need an interactive selection; not queried. No PIB state figure found."}
+{"id": "C072", "decision": "unbindable", "reason": "No official state-wise 24th-instalment figure found (PIB search returned only an older undated state table)."}
+{"id": "C073", "decision": "unbindable", "reason": "Same as C072."}
+{"id": "C074", "decision": "bound", "evidence_id": "E01", "key": "inst24_beneficiaries", "reason": "PIB 24th-instalment note: 9.34 crore farmers."}
+{"id": "C075", "decision": "bound", "evidence_id": "E01", "key": "inst24_amount", "reason": "PIB 24th-instalment note: Rs 18,690 crore (pre-release claim of 'over 18,680')."}
+{"id": "C076", "decision": "unbindable", "reason": "No official Bihar cumulative PM-KISAN amount found."}
+{"id": "C077", "decision": "unbindable", "reason": "No official Rajasthan registered-farmer count found."}
+{"id": "C078", "decision": "unbindable", "reason": "No official state-wise 24th-instalment figure found."}
+{"id": "C079", "decision": "unbindable", "reason": "No official state-wise 24th-instalment figure found."}
+{"id": "C080", "decision": "unbindable", "reason": "No official 'more than 11 crore families since inception' figure found (searched with the cabinet release)."}
+{"id": "C081", "decision": "unbindable", "reason": "No dated 2026 official 'people covered' figure found."}
+{"id": "C082", "decision": "ambiguous", "evidence_id": "E04", "key": "hospital_admissions_cumulative", "ambiguity": "definition and period", "reason": "Claim counts people treated (29 Oct); PIB counts 13.25 crore admissions to 31 Aug 2026 (59 days earlier)."}
+{"id": "C083", "decision": "bound", "evidence_id": "E02", "key": "cumulative_amount_inst1_23", "reason": "Cumulative through the 23rd instalment is a fixed quantity: PIB more than Rs 4.47 lakh crore."}
+{"id": "C084", "decision": "unbindable", "reason": "No official Gujarat cumulative amount found."}
+{"id": "C085", "decision": "bound", "evidence_id": "E01", "key": "inst24_beneficiaries", "reason": "PIB 24th-instalment note: 9.34 crore farmers."}
+{"id": "C086", "decision": "bound", "evidence_id": "E01", "key": "inst24_amount", "reason": "PIB 24th-instalment note: Rs 18,690 crore."}
+{"id": "C087", "decision": "unbindable", "reason": "No official Chhattisgarh 24th-instalment figure found."}
+{"id": "C088", "decision": "unbindable", "reason": "No official Chhattisgarh 24th-instalment figure found."}
+{"id": "C089", "decision": "bound", "evidence_id": "E01", "key": "inst24_amount", "reason": "PIB 24th-instalment note: Rs 18,690 crore."}
+{"id": "C090", "decision": "unbindable", "reason": "No official Uttarakhand 24th-instalment figure found."}
+{"id": "C091", "decision": "unbindable", "reason": "No official Uttarakhand 24th-instalment figure found."}
+{"id": "C092", "decision": "bound", "evidence_id": "E02", "key": "cumulative_amount_inst1_23", "reason": "Same metric as C083; PIB says more than Rs 4.47 lakh crore. The claim's '447 लाख करोड़' is 100 times larger (likely a dropped decimal point)."}
+{"id": "C093", "decision": "bound", "evidence_id": "E01", "key": "inst24_beneficiaries", "reason": "PIB 24th-instalment note: 9.34 crore farmers; claim says about 10 crore."}
+{"id": "C094", "decision": "bound", "evidence_id": "E01", "key": "inst24_amount", "reason": "PIB 24th-instalment note: Rs 18,690 crore."}
+{"id": "C095", "decision": "unbindable", "reason": "No official UP 24th-instalment figure found."}
+{"id": "C096", "decision": "unbindable", "reason": "No official UP 24th-instalment figure found."}
+{"id": "C097", "decision": "unbindable", "reason": "pmuy.gov.in state-wise numbers need an interactive selection; not queried. No PIB state figure found."}
+{"id": "C098", "decision": "unbindable", "reason": "UP state row of JJM annexures not readable; dashboard JavaScript-only."}
+{"id": "C099", "decision": "unbindable", "reason": "UP state row of JJM annexures not readable; dashboard JavaScript-only."}
+{"id": "C100", "decision": "unbindable", "reason": "No official state-level PMAY-U 2.0 BLC sanction count for Chhattisgarh found (pmay-urban.gov.in state PDF dates from 2025)."}
+{"id": "C101", "decision": "unbindable", "reason": "Same as C100."}
+{"id": "C102", "decision": "unbindable", "reason": "State cabinet advance withdrawal; no central official figure for the central share found."}

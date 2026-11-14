@@ -1,0 +1,40 @@
+{
+ "model": "gemini-3.5-flash-lite",
+ "claim_id": "C030",
+ "lang": "en",
+ "prompt_hash": "cf656073b7d7",
+ "called_at": "2026-11-14T13:22:03Z",
+ "http_status": 200,
+ "prompt": "You check numerical claims about Indian government schemes against official statistics.\nSCHEME: Pradhan Mantri Awas Yojana (PMAY, Gramin and Urban)\nCLAIM: More than 5.92 lakh PM Awas houses were completed in Chhattisgarh in the last financial year.\nARTICLE DATE: 2026-08-23\nAnswer in JSON only, with exactly these keys:\n{\"verdict\": \"SUPPORTED\" | \"CONTRADICTED\" | \"CANNOT_VERIFY\",\n \"source_title\": <title of the official source you rely on, or null>,\n \"source_url\": <official URL you rely on, or null>,\n \"official_figure\": <the official number as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <date the official figure refers to, YYYY-MM-DD, or null>,\n \"confidence\": <number from 0 to 1: how likely your verdict is correct>,\n \"reason\": <one sentence>}\nSUPPORTED means an official source states a figure that agrees with the claim. CONTRADICTED means an official source states a different figure for the same metric, place and period. If you are not certain an official source states this exact figure, answer CANNOT_VERIFY with null source and figure. Do not guess a URL.",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\"verdict\": \"CANNOT_VERIFY\", \"source_title\": null, \"source_url\": null, \"official_figure\": null, \"as_of_date\": null, \"confidence\": 0.0, \"reason\": \"No official government database or publication accessed within the knowledge cutoff provides the exact completion figure of 5.92 lakh houses in Chhattisgarh for the specified financial year.\"}",
+       "thoughtSignature": "EmAKXgFpFH0Tham1KpP5cbff9RMW+43/8FiyaZyNtXA0qtvt/0JwZG4dX6gan7daAr+l0a+vlNrTuBw9XYEC423q6tbZ0CckVvgvPqIu2P8CT9Xy/fVBTA5u/J6XNYTZ9So="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 324,
+   "candidatesTokenCount": 86,
+   "totalTokenCount": 410,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 324
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "e2D4apCsBuiz694P4PmYIA"
+ }
+}

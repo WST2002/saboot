@@ -1,0 +1,40 @@
+{
+ "model": "gemini-3.5-flash-lite",
+ "claim_id": "C036",
+ "lang": "hi",
+ "prompt_hash": "d8457890eeac",
+ "called_at": "2026-11-14T13:22:52Z",
+ "http_status": 200,
+ "prompt": "You check numerical claims about Indian government schemes against official statistics.\nSCHEME: Jal Jeevan Mission (JJM)\nCLAIM: 81.57% तक पहुंच चुका था\nARTICLE DATE: 2026-09-06\nAnswer in JSON only, with exactly these keys:\n{\"verdict\": \"SUPPORTED\" | \"CONTRADICTED\" | \"CANNOT_VERIFY\",\n \"source_title\": <title of the official source you rely on, or null>,\n \"source_url\": <official URL you rely on, or null>,\n \"official_figure\": <the official number as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <date the official figure refers to, YYYY-MM-DD, or null>,\n \"confidence\": <number from 0 to 1: how likely your verdict is correct>,\n \"reason\": <one sentence>}\nSUPPORTED means an official source states a figure that agrees with the claim. CONTRADICTED means an official source states a different figure for the same metric, place and period. If you are not certain an official source states this exact figure, answer CANNOT_VERIFY with null source and figure. Do not guess a URL.",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\"verdict\": \"CANNOT_VERIFY\", \"source_title\": null, \"source_url\": null, \"official_figure\": null, \"as_of_date\": null, \"confidence\": 1.0, \"reason\": \"Future article dates cannot be verified with current official statistics.\"}",
+       "thoughtSignature": "EmAKXgFpFH0THf5jtE/NR1W4gQAFNfpWZvipPf3g4QtG6pDSDqXpq7SI83+DiIOGHvOSaAMh/ncIuxRYmapxPb/Hump9HZOmrsraRvF513qCA7qaTutUjKQTNWE7wSnjJ7Q="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 305,
+   "candidatesTokenCount": 65,
+   "totalTokenCount": 370,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 305
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "rGD4au6VHeiz694P4PmYIA"
+ }
+}

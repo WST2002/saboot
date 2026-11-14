@@ -1,0 +1,19 @@
+# Secrets
+.env
+
+# Raw news HTML and saved official page text: not republished (copyright)
+data/raw/
+
+# Sprint sign-up screenshots (private)
+proof/
+
+__pycache__/
+
+# Superseded drafts and third-party template
+report/draft.md
+report/abstract-template.md
+report/saboot-report.html
+report/saboot-report.pdf
+apart-submission-template.docx
+apart-submission-template.txt
+.notes/

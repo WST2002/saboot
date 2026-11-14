@@ -1,0 +1,40 @@
+{
+ "model": "gemini-3.5-flash-lite",
+ "claim_id": "C081",
+ "lang": "hi",
+ "prompt_hash": "20b8acb73ed3",
+ "called_at": "2026-11-14T13:30:58Z",
+ "http_status": 200,
+ "prompt": "You check numerical claims about Indian government schemes against official statistics.\nSCHEME: Ayushman Bharat PM-JAY (Pradhan Mantri Jan Arogya Yojana)\nCLAIM: प्रधानमंत्री जन आरोग्य योजना (PM-JAY) के तहत लगभग 62 करोड़ लोगों को कवर किया जा रहा है\nARTICLE DATE: 2026-10-29\nAnswer in JSON only, with exactly these keys:\n{\"verdict\": \"SUPPORTED\" | \"CONTRADICTED\" | \"CANNOT_VERIFY\",\n \"source_title\": <title of the official source you rely on, or null>,\n \"source_url\": <official URL you rely on, or null>,\n \"official_figure\": <the official number as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <date the official figure refers to, YYYY-MM-DD, or null>,\n \"confidence\": <number from 0 to 1: how likely your verdict is correct>,\n \"reason\": <one sentence>}\nSUPPORTED means an official source states a figure that agrees with the claim. CONTRADICTED means an official source states a different figure for the same metric, place and period. If you are not certain an official source states this exact figure, answer CANNOT_VERIFY with null source and figure. Do not guess a URL.",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\"verdict\": \"SUPPORTED\", \"source_title\": \"Ayushman Bharat PM-JAY Official Website / PIB\", \"source_url\": \"https://pib.gov.in/PressReleasePage.aspx?PRID=2047805\", \"official_figure\": 620000000, \"as_of_date\": \"2024-09-11\", \"confidence\": 0.95, \"reason\": \"Official government press releases confirm that approximately 62 crore individuals are covered under the Ayushman Bharat PM-JAY scheme.\"}",
+       "thoughtSignature": "EmAKXgFpFH0Tq1HehROjCHY8+NiFi92KM+tlzRsR0aL41A7rA9ztq8M6iMDtuw99JA356LRxEhZ8yh1tGIk+SccFgfq9GkYlTWNg4/rSX2sPBArKhkZ8IGrc+3WHkFz/zEM="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 328,
+   "candidatesTokenCount": 132,
+   "totalTokenCount": 460,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 328
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "kWL4aoTLG6Wz694PsYzs0Ao"
+ }
+}

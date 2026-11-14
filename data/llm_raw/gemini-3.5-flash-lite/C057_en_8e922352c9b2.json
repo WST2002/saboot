@@ -1,0 +1,40 @@
+{
+ "model": "gemini-3.5-flash-lite",
+ "claim_id": "C057",
+ "lang": "en",
+ "prompt_hash": "8e922352c9b2",
+ "called_at": "2026-11-14T13:26:35Z",
+ "http_status": 200,
+ "prompt": "You check numerical claims about Indian government schemes against official statistics.\nSCHEME: Pradhan Mantri Ujjwala Yojana (PMUY)\nCLAIM: The Centre approved expenditure of Rs 12,001 crore to continue the Ujjwala subsidy.\nARTICLE DATE: 2026-10-01\nAnswer in JSON only, with exactly these keys:\n{\"verdict\": \"SUPPORTED\" | \"CONTRADICTED\" | \"CANNOT_VERIFY\",\n \"source_title\": <title of the official source you rely on, or null>,\n \"source_url\": <official URL you rely on, or null>,\n \"official_figure\": <the official number as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <date the official figure refers to, YYYY-MM-DD, or null>,\n \"confidence\": <number from 0 to 1: how likely your verdict is correct>,\n \"reason\": <one sentence>}\nSUPPORTED means an official source states a figure that agrees with the claim. CONTRADICTED means an official source states a different figure for the same metric, place and period. If you are not certain an official source states this exact figure, answer CANNOT_VERIFY with null source and figure. Do not guess a URL.",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\n \"verdict\": \"SUPPORTED\",\n \"source_title\": \"Cabinet Committee on Economic Affairs approval for continuation of Pradhan Mantri Ujjwala Yojana\",\n \"source_url\": \"https://pib.gov.in/PressReleasePage.aspx?PRID=1959775\",\n \"official_figure\": 120010000000,\n \"as_of_date\": \"2023-09-13\",\n \"confidence\": 1.0,\n \"reason\": \"The Cabinet Committee on Economic Affairs approved an expenditure of Rs. 12,001 crore for the continuation of PMUY for the period from 2023-24 to 2025-26.\"\n}",
+       "thoughtSignature": "EmAKXgFpFH0TzKlsryV4ecOfRisr1et/+LpV+OkD/0PgoPZTSvhmrLtL4nytMD/ThilVQGS1NztUrnaOrJ+/ASsxJqdSNhIo/6h0Mb+MSc4t7rwCXy4mcdX3iTN8DwA17cQ="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 320,
+   "candidatesTokenCount": 172,
+   "totalTokenCount": 492,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 320
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "i2H4ap3uBfj7jNAPvu6igA0"
+ }
+}

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="394" viewBox="0 0 720 394" font-family="Helvetica, Arial, sans-serif">
+<rect width="720" height="394" fill="#fcfcfb"/>
+<text x="16" y="28" font-size="15" font-weight="600" fill="#0b0b0b">gemini-3.5-flash-lite, closed-book: verdicts by gold label (102 claims)</text>
+<line x1="660.0" y1="224" x2="660.0" y2="336" stroke="#d9d8d4" stroke-width="1"/>
+<line x1="552.5" y1="224" x2="552.5" y2="336" stroke="#d9d8d4" stroke-width="1"/>
+<line x1="445.0" y1="224" x2="445.0" y2="336" stroke="#d9d8d4" stroke-width="1"/>
+<line x1="337.5" y1="224" x2="337.5" y2="336" stroke="#d9d8d4" stroke-width="1"/>
+<line x1="230.0" y1="224" x2="230.0" y2="336" stroke="#d9d8d4" stroke-width="1"/>
+<line x1="660.0" y1="64" x2="660.0" y2="176" stroke="#d9d8d4" stroke-width="1"/>
+<line x1="552.5" y1="64" x2="552.5" y2="176" stroke="#d9d8d4" stroke-width="1"/>
+<line x1="445.0" y1="64" x2="445.0" y2="176" stroke="#d9d8d4" stroke-width="1"/>
+<line x1="337.5" y1="64" x2="337.5" y2="176" stroke="#d9d8d4" stroke-width="1"/>
+<line x1="230.0" y1="64" x2="230.0" y2="176" stroke="#d9d8d4" stroke-width="1"/>
+<text x="230" y="56" font-size="13" font-weight="600" fill="#0b0b0b">Hindi wording of the claim</text>
+<rect x="230.0" y="68" width="37.1" height="20" fill="#2a78d6"/>
+<text x="249.5" y="82" font-size="11" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="269.1" y="68" width="390.9" height="20" fill="#9a9893"/>
+<text x="464.5" y="82" font-size="11" text-anchor="middle" fill="#0b0b0b">20</text>
+<text x="222" y="82" font-size="12" text-anchor="end" fill="#0b0b0b">match (expect supported)</text>
+<text x="666" y="82" font-size="11" fill="#52514e">n=22</text>
+<rect x="230.0" y="96" width="141.3" height="20" fill="#eb6834"/>
+<text x="301.7" y="110" font-size="11" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="373.3" y="96" width="286.7" height="20" fill="#9a9893"/>
+<text x="516.7" y="110" font-size="11" text-anchor="middle" fill="#0b0b0b">2</text>
+<text x="222" y="110" font-size="12" text-anchor="end" fill="#0b0b0b">mismatch (expect contradicted)</text>
+<text x="666" y="110" font-size="11" fill="#52514e">n=3</text>
+<rect x="230.0" y="124" width="59.4" height="20" fill="#2a78d6"/>
+<text x="260.7" y="138" font-size="11" text-anchor="middle" fill="#ffffff">3</text>
+<rect x="291.4" y="124" width="368.6" height="20" fill="#9a9893"/>
+<text x="475.7" y="138" font-size="11" text-anchor="middle" fill="#0b0b0b">18</text>
+<text x="222" y="138" font-size="12" text-anchor="end" fill="#0b0b0b">ambiguous (expect cannot verify)</text>
+<text x="666" y="138" font-size="11" fill="#52514e">n=21</text>
+<rect x="230.0" y="152" width="5.7" height="20" fill="#2a78d6"/>
+<rect x="237.7" y="152" width="5.7" height="20" fill="#eb6834"/>
+<rect x="245.4" y="152" width="414.6" height="20" fill="#9a9893"/>
+<text x="452.7" y="166" font-size="11" text-anchor="middle" fill="#0b0b0b">54</text>
+<text x="222" y="166" font-size="12" text-anchor="end" fill="#0b0b0b">unbindable (expect cannot verify)</text>
+<text x="666" y="166" font-size="11" fill="#52514e">n=56</text>
+<text x="230.0" y="188" font-size="10" text-anchor="middle" fill="#52514e">0%</text>
+<text x="337.5" y="188" font-size="10" text-anchor="middle" fill="#52514e">25%</text>
+<text x="445.0" y="188" font-size="10" text-anchor="middle" fill="#52514e">50%</text>
+<text x="552.5" y="188" font-size="10" text-anchor="middle" fill="#52514e">75%</text>
+<text x="660.0" y="188" font-size="10" text-anchor="middle" fill="#52514e">100%</text>
+<text x="230" y="216" font-size="13" font-weight="600" fill="#0b0b0b">English wording of the claim</text>
+<rect x="230.0" y="228" width="430.0" height="20" fill="#9a9893"/>
+<text x="445.0" y="242" font-size="11" text-anchor="middle" fill="#0b0b0b">22</text>
+<text x="222" y="242" font-size="12" text-anchor="end" fill="#0b0b0b">match (expect supported)</text>
+<text x="666" y="242" font-size="11" fill="#52514e">n=22</text>
+<rect x="230.0" y="256" width="141.3" height="20" fill="#eb6834"/>
+<text x="301.7" y="270" font-size="11" text-anchor="middle" fill="#ffffff">1</text>
+<rect x="373.3" y="256" width="286.7" height="20" fill="#9a9893"/>
+<text x="516.7" y="270" font-size="11" text-anchor="middle" fill="#0b0b0b">2</text>
+<text x="222" y="270" font-size="12" text-anchor="end" fill="#0b0b0b">mismatch (expect contradicted)</text>
+<text x="666" y="270" font-size="11" fill="#52514e">n=3</text>
+<rect x="230.0" y="284" width="39.0" height="20" fill="#2a78d6"/>
+<text x="250.5" y="298" font-size="11" text-anchor="middle" fill="#ffffff">2</text>
+<rect x="271.0" y="284" width="389.0" height="20" fill="#9a9893"/>
+<text x="465.5" y="298" font-size="11" text-anchor="middle" fill="#0b0b0b">19</text>
+<text x="222" y="298" font-size="12" text-anchor="end" fill="#0b0b0b">ambiguous (expect cannot verify)</text>
+<text x="666" y="298" font-size="11" fill="#52514e">n=21</text>
+<rect x="230.0" y="312" width="36.4" height="20" fill="#2a78d6"/>
+<text x="249.2" y="326" font-size="11" text-anchor="middle" fill="#ffffff">5</text>
+<rect x="268.4" y="312" width="391.6" height="20" fill="#9a9893"/>
+<text x="464.2" y="326" font-size="11" text-anchor="middle" fill="#0b0b0b">51</text>
+<text x="222" y="326" font-size="12" text-anchor="end" fill="#0b0b0b">unbindable (expect cannot verify)</text>
+<text x="666" y="326" font-size="11" fill="#52514e">n=56</text>
+<text x="230.0" y="348" font-size="10" text-anchor="middle" fill="#52514e">0%</text>
+<text x="337.5" y="348" font-size="10" text-anchor="middle" fill="#52514e">25%</text>
+<text x="445.0" y="348" font-size="10" text-anchor="middle" fill="#52514e">50%</text>
+<text x="552.5" y="348" font-size="10" text-anchor="middle" fill="#52514e">75%</text>
+<text x="660.0" y="348" font-size="10" text-anchor="middle" fill="#52514e">100%</text>
+<text x="222" y="376" font-size="12" text-anchor="end" fill="#0b0b0b">Model verdict:</text>
+<rect x="230" y="366" width="12" height="12" rx="2" fill="#2a78d6"/>
+<text x="247" y="376" font-size="12" fill="#0b0b0b">SUPPORTED</text>
+<rect x="337.5" y="366" width="12" height="12" rx="2" fill="#eb6834"/>
+<text x="354.5" y="376" font-size="12" fill="#0b0b0b">CONTRADICTED</text>
+<rect x="467.5" y="366" width="12" height="12" rx="2" fill="#9a9893"/>
+<text x="484.5" y="376" font-size="12" fill="#0b0b0b">CANNOT_VERIFY</text>
+</svg>

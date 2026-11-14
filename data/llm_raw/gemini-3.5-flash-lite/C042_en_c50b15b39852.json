@@ -1,0 +1,40 @@
+{
+ "model": "gemini-3.5-flash-lite",
+ "claim_id": "C042",
+ "lang": "en",
+ "prompt_hash": "c50b15b39852",
+ "called_at": "2026-11-14T13:24:04Z",
+ "http_status": 200,
+ "prompt": "You check numerical claims about Indian government schemes against official statistics.\nSCHEME: MGNREGA (rural employment guarantee scheme)\nCLAIM: The Centre has made an interim allocation of Rs 3,354.85 crore for Chhattisgarh.\nARTICLE DATE: 2026-09-20\nAnswer in JSON only, with exactly these keys:\n{\"verdict\": \"SUPPORTED\" | \"CONTRADICTED\" | \"CANNOT_VERIFY\",\n \"source_title\": <title of the official source you rely on, or null>,\n \"source_url\": <official URL you rely on, or null>,\n \"official_figure\": <the official number as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <date the official figure refers to, YYYY-MM-DD, or null>,\n \"confidence\": <number from 0 to 1: how likely your verdict is correct>,\n \"reason\": <one sentence>}\nSUPPORTED means an official source states a figure that agrees with the claim. CONTRADICTED means an official source states a different figure for the same metric, place and period. If you are not certain an official source states this exact figure, answer CANNOT_VERIFY with null source and figure. Do not guess a URL.",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\n  \"verdict\": \"CANNOT_VERIFY\",\n  \"source_title\": null,\n  \"source_url\": null,\n  \"official_figure\": null,\n  \"as_of_date\": null,\n  \"confidence\": 0.0,\n  \"reason\": \"The article date is in the future (2026-09-20) and no official source can be verified for this specific future interim allocation claim.\"\n}",
+       "thoughtSignature": "EmAKXgFpFH0TFkm9TgFx8T2wzt1pRNEDW0Z08ZKTKUIDo9VHrQJykl6sY5sUzUbatD393Xyi/YiCXi1YJ857ie76K71xhmFe9RRQTxBmZ13sxnyba5fwGHT25IexkMT0WC0="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 318,
+   "candidatesTokenCount": 104,
+   "totalTokenCount": 422,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 318
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "9GD4auadE9rdg8UPgYqF2Q0"
+ }
+}

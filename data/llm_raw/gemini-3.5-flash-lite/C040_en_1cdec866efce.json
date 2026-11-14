@@ -1,0 +1,40 @@
+{
+ "model": "gemini-3.5-flash-lite",
+ "claim_id": "C040",
+ "lang": "en",
+ "prompt_hash": "1cdec866efce",
+ "called_at": "2026-11-14T13:23:32Z",
+ "http_status": 200,
+ "prompt": "You check numerical claims about Indian government schemes against official statistics.\nSCHEME: Pradhan Mantri Awas Yojana (PMAY, Gramin and Urban)\nCLAIM: In June 2026 more than 2.13 lakh additional houses were approved.\nARTICLE DATE: 2026-09-09\nAnswer in JSON only, with exactly these keys:\n{\"verdict\": \"SUPPORTED\" | \"CONTRADICTED\" | \"CANNOT_VERIFY\",\n \"source_title\": <title of the official source you rely on, or null>,\n \"source_url\": <official URL you rely on, or null>,\n \"official_figure\": <the official number as a plain number in the claim's unit, fully written out (for example 94900000, not \"9.49 crore\"; a percentage as 82.09), or null>,\n \"as_of_date\": <date the official figure refers to, YYYY-MM-DD, or null>,\n \"confidence\": <number from 0 to 1: how likely your verdict is correct>,\n \"reason\": <one sentence>}\nSUPPORTED means an official source states a figure that agrees with the claim. CONTRADICTED means an official source states a different figure for the same metric, place and period. If you are not certain an official source states this exact figure, answer CANNOT_VERIFY with null source and figure. Do not guess a URL.",
+ "response": {
+  "candidates": [
+   {
+    "content": {
+     "parts": [
+      {
+       "text": "{\"verdict\": \"CANNOT_VERIFY\", \"source_title\": null, \"source_url\": null, \"official_figure\": null, \"as_of_date\": null, \"confidence\": 0.0, \"reason\": \"The claimed date of June 2026 is in the future relative to the article date and current data availability, making official verification impossible.\"}",
+       "thoughtSignature": "EmAKXgFpFH0T3h9sqzx8oUVf1wVOZrGrr4ffzeUhK76gpnm/8YrhO91cZ1hHStdar7hzGgs4ge0U/LGDvgpQO40ZZncZGwvqpzUm1eWYapRP5T+6RHSJ3CaLdXFgn7P7nFI="
+      }
+     ],
+     "role": "model"
+    },
+    "finishReason": "STOP",
+    "index": 0
+   }
+  ],
+  "usageMetadata": {
+   "promptTokenCount": 322,
+   "candidatesTokenCount": 83,
+   "totalTokenCount": 405,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 322
+    }
+   ],
+   "serviceTier": "standard"
+  },
+  "modelVersion": "gemini-3.5-flash-lite",
+  "responseId": "1GD4as_mIuSj694PkMDL2Qc"
+ }
+}
