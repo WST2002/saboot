@@ -6,7 +6,7 @@ ABSTRACT: A Hindi newspaper reported that "about 10 crore" farmers received the 
 
 ## 1. Introduction
 
-On 30 October 2026, Patrika reported that "about 10 crore" farmers had received the 24th PM-KISAN instalment. The Press Information Bureau (PIB) note for that day says 9.34 crore (also written "more than 9.34 crore"; "about 10 crore" would pass only if the true count exceeded 9.52 crore). That is 7.1% above the official figure, and our rules allow only ±5% for "about" (Table C.3). Hindi newspapers report government schemes in numbers like this every day, and for many readers these articles are how they learn whether a scheme works. Most such numbers have an official counterpart: dated PIB releases in Hindi and English, scheme dashboards, and Parliament answers. Few people check. The sources are scattered, often in English, and dashboards overwrite last month's figure with today's.
+On 30 October 2026, Patrika reported that "about 10 crore" farmers had received the 24th PM-KISAN instalment. The Press Information Bureau (PIB) note for that day says 9.34 crore (also written "more than 9.34 crore"; "about 10 crore" would pass only if the true count were at least 9.524 crore). That is 7.1% above the official figure, and our rules allow only ±5% for "about" (Table C.3). Hindi newspapers report government schemes in numbers like this every day, and for many readers these articles are how they learn whether a scheme works. Most such numbers have an official counterpart: dated PIB releases in Hindi and English, scheme dashboards, and Parliament answers. Few people check. The sources are scattered, often in English, and dashboards overwrite last month's figure with today's.
 
 AI research agents now get the same question: is this number right? When no official figure exists, the honest answer is "I cannot verify this". The failure we care about is false verification: an agent cites an official-looking source that does not support the claimed number, so an unchecked claim looks checked.
 
@@ -46,7 +46,7 @@ Each claim received one of four labels. **Bound + match**: an official dated sou
 
 Sources were searched in a fixed order: PIB in the claim's language, PIB in the other language, the scheme dashboard or its Wayback Machine snapshot, and Parliament answers, preferring the nearest date on or before the article date. For a cumulative stock (houses completed, tap connections) the official date had to be within 31 days of the claim's time reference; otherwise the claim was bound-ambiguous (period gap).
 
-**Match rule:** the official value, rounded to the claim's stated precision, must equal the claim; trailing zeros count as stated, so "18,700 crore" is read as exact to the crore. "से अधिक" (over) requires official ≥ claim, and "लगभग" or "करीब" (about) allows ±5%. The lenient rule also accepts a gap of up to 5%. The rules were written down before any label was assigned.
+**Match rule:** the official value, rounded to the claim's stated precision, must equal the claim; trailing zeros count as stated, so "18,700 crore" is read as exact to the crore. "से अधिक" (over) requires official ≥ claim, and "लगभग" or "करीब" (about) allows ±5% of the official value. The lenient rule also accepts a gap of up to 5%. The rules were written down before any label was assigned.
 
 ### 3.3 Validation and provenance
 
@@ -109,7 +109,7 @@ TABLE: **Table 2.** gemini-3.5-flash-lite in both conditions, Hindi and English 
 
 **Given the official excerpt, the model stopped abstaining but did not check comparability.** In the clearest case (C088, Hindi, near-miss excerpt), a claim that "about Rs 500 crore" reached Chhattisgarh farmers was called a mismatch with the national Rs 18,690 crore. The verifier compared the two numbers but did not check that they measured the same thing, in the same place and period. The same failure runs through the ambiguous and near-miss results below (Figure 2, Table 2).
 
-**Clean cases were handled well.** False abstention on cleanly bound claims fell to 0.0%, and 43 of 44 matching answers were MATCH. The two missed mismatches are one claim in both languages: the "about 10 crore" farmers (C093), accepted although the 7.1% gap is outside the ±5% that "about" allows.
+**Clean cases were handled well.** False abstention on cleanly bound claims fell to 0.0%, and 43 of 44 matching answers were MATCH. The two missed mismatch answers are one claim in both languages: the "about 10 crore" farmers (C093), accepted although the 7.1% gap is outside the ±5% that "about" allows.
 
 **AMBIGUOUS was never used where it applied.** On the 42 answers for ambiguous claims the verifier said MATCH 18 times, MISMATCH 18 times and CANNOT_VERIFY 6 times; across all 202 answers it chose AMBIGUOUS once, on an unbindable claim. Every figure in the excerpt was treated as directly comparable. "48.54 crore Ayushman cards" was called a mismatch with "48.51 crore people holding cards", a different count (C044). October claims about national tap coverage were set against 82.09% dated 18 July 2026 and both called mismatches (C063, C068). For C036, where PIB releases give both 81.56% and 81.57% for the same date, the verifier reported the claim's own 81.57% and answered MATCH. In 29 answers the reported figure was the claim's own number. For matching claims that is expected; C036 shows the risk, a pick of whichever official figure agrees with the claim.
 
@@ -267,7 +267,7 @@ TABLE: **Table C.2.** Labels by speaker (strict rule).
 | Official | 1 | 1 | 0 | 0 | 2 | 100.0% (2/2, 34.2-100.0) | 50.0% (1/2, 9.5-90.5) |
 | Opposition | 0 | 0 | 0 | 1 | 1 | 0.0% (0/1, 0.0-79.3) | n/a |
 
-TABLE: **Table C.3.** The three strict mismatches, largest gap first. Official values with the as-of date of the official figure; all three official figures are from PIB. For C093 the PIB note gives 9.34 crore and also "more than 9.34 crore", a lower bound; we use 9.34 crore, and "about 10 crore" would pass the ±5% rule only if the true count exceeded 9.52 crore.
+TABLE: **Table C.3.** The three strict mismatches, largest gap first. Official values with the as-of date of the official figure; all three official figures are from PIB. For C093 the PIB note gives 9.34 crore and also "more than 9.34 crore", a lower bound; we use 9.34 crore, which the headline and text state, and "about 10 crore" would pass the ±5% rule only if the true count were at least 9.524 crore. Treating C093 as ambiguous instead would make the strict match rate 22/24 (91.7%).
 | Claim | Outlet, date | Claimed (Hindi) | Claimed value | Official (as of) | Gap | Lenient |
 |---|---|---|---|---|---|---|
 | C092 | Patrika, 2026-10-30 | 447 लाख करोड़ रुपये से अधिक | 447,000,000,000,000 | 4,470,000,000,000 (2026-07-31) | +9900.0% | mismatch |
