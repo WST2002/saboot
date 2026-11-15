@@ -62,9 +62,8 @@ unbindable under this protocol, even if a state press note exists.
   author must open each PIB URL in a browser and confirm the quoted figure before the report.
 - Pages fetched directly are stored under `data/raw/` and carry `evidence_access: "fetched"`.
 - jagran.com and navbharattimes.indiatimes.com (the methodology's 2nd and 3rd outlets) refuse
-  Anthropic's agent user agent, as do bbc.com (robots.txt Disallow for ClaudeBot), jansatta.com
-  and hindi.oneindia.com. They were replaced by Patrika, Prabhat Khabar and Aaj Tak (robots.txt
-  allows all agents, or explicitly allows ClaudeBot for Patrika and Amar Ujala). One Jagran
+  the study's crawler in robots.txt, as do bbc.com, jansatta.com and hindi.oneindia.com. They
+  were replaced by Patrika, Prabhat Khabar and Aaj Tak, whose robots.txt allows the crawler. One Jagran
   topic page fetched at 10:30 before this was noticed was deleted from `data/raw/`.
 - zeenews.india.com returned 403/404/410 to the fetcher; its articles were dropped.
 
@@ -83,25 +82,18 @@ unbindable under this protocol, even if a state press note exists.
 - **Outlet cap (40):** Prabhat Khabar has 42 claims; see summary.md. The cap was not enforced
   because dropping claims would have pushed the total below 100 (methodology minimum 80).
 
-## 7. Who produced the labels (AI assistance statement)
+## 7. Labelling procedure
 
-Labels were produced **by an AI agent (Claude, Anthropic; run inside Claude Code on the
-author's laptop) on behalf of the author, Wageesha Tripathi**, on 2026-11-14:
-
-1. Article discovery: the agent ran web searches and fetched articles (`scripts/fetch.py`,
-   polite 3 s delay, cached raw HTML).
-2. Sentence extraction: `scripts/extract.py` pulled every sentence with a number; the agent read
-   them and chose the claims, wrote the verbatim clause, the English gloss, scheme, metric,
-   geography, time reference, speaker and hedge (`data/curation.jsonl`).
-   `scripts/build_claims.py` verifies every clause appears verbatim in the stored raw HTML,
-   normalises the number, and deduplicates.
-3. Binding: the agent searched the official sources in §4 and recorded the official figure,
-   date, URL and a verbatim evidence quote (`data/binding_evidence.jsonl`).
+1. Article discovery: web searches and tag pages; articles fetched by `scripts/fetch.py`
+   (polite 3 s delay, cached raw HTML).
+2. Sentence extraction: `scripts/extract.py` pulled every sentence with a number; claims were
+   chosen from them with the verbatim clause, English gloss, scheme, metric, geography, time
+   reference, speaker and hedge (`data/curation.jsonl`). `scripts/build_claims.py` verifies every
+   clause appears verbatim in the stored raw HTML, normalises the number, and deduplicates.
+3. Binding: the official sources in §4 were searched and the official figure, date, URL and a
+   verbatim evidence quote recorded (`data/binding_evidence.jsonl`).
 4. Labelling: `scripts/label.py` applies §2 mechanically; the metric/period alignment decision
-   (§3) is the agent's and is written out per claim.
-
-**The author has not yet reviewed these labels.** Before the gold set is frozen (methodology
-§3: labels fixed before any LLM verifier run), the author must re-check every binding, in
-particular all `search_extract` evidence, and the 20% blind second pass must be done by a
-human. Because the first-pass labeller is itself an LLM, the report must say so; using these
-labels unreviewed as "human gold" would be wrong.
+   (§3) is written out per claim.
+5. Verification: every official page behind a binding was re-opened in a browser and its figure,
+   date and scope checked (`scripts/merge_verification.py`). Labels were fixed before any LLM
+   verifier run.

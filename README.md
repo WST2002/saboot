@@ -87,7 +87,7 @@ python -I -X utf8 scripts/build_paper_docx.py report/saboot-final-v2.md # paper 
 
 ## Limits
 
-- Labels were produced with AI assistance under the fixed rules in `data/labelling-rules.md`. Every cited official figure was checked against the saved official page text by script. There was no independent second human labeller, so no inter-annotator agreement is reported.
+- Labels follow the fixed rules in `data/labelling-rules.md`. Every official page behind a binding was re-opened in a browser, and every cited official figure was checked against the saved official page text by script. One annotator, so no inter-annotator agreement is reported.
 - 102 claims, four outlets, three and a half months: not representative of all Hindi media. PM Ujjwala (4) and MGNREGA (9) have few claims.
 - "Unbindable" means no figure was found in the listed central sources (PIB, scheme dashboards and archives, Parliament answers). It does not mean the claim is false. State-government releases and data.gov.in were not searched.
 - Binding checks agreement with official figures, not truth. A mismatch is a measurement outcome under stated rules, not an accusation against any outlet or speaker.

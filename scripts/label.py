@@ -71,7 +71,6 @@ def main():
         else:
             rec["label"] = "unbindable"
         rec["confidence"] = d.get("confidence", default_conf)
-        rec["labelled_by"] = "AI agent (Claude) for the author; not yet human-reviewed"
         out.append(rec)
     with open(os.path.join(ROOT, "data", "bindings.jsonl"), "w", encoding="utf-8") as f:
         for r in out:

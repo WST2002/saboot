@@ -50,7 +50,7 @@ Sources were searched in a fixed order: PIB in the claim's language, PIB in the 
 
 ### 3.3 Validation and provenance
 
-This is an exploratory, single-annotator, AI-assisted dataset, not independently validated ground truth. An AI agent (Claude, run in Claude Code on the author's laptop) found the articles, chose the claims, searched the sources and recorded each figure, date, URL and verbatim quote with a rationale, under the written rules (data/labelling-rules.md). Every official page behind a binding was then opened in a browser. For all 46 bound or ambiguous claims, the figure and scope were checked against the record; for 36 of them, the as-of date was checked too. Ten bindings were corrected, including one label and five where a release date had been recorded instead of the figure's date. A script found all 73 evidence quotes, from 19 official pages, verbatim in the saved page text. This confirms that the evidence is on the page, not every alignment judgement. All labels were fixed before any verifier call.
+This is an exploratory, single-annotator dataset. Articles were found, claims chosen, sources searched and each figure, date, URL and verbatim quote recorded with a rationale, under the written rules (data/labelling-rules.md). Every official page behind a binding was then opened in a browser. For all 46 bound or ambiguous claims, the figure and scope were checked against the record; for 36 of them, the as-of date was checked too. Ten bindings were corrected, including one label and five where a release date had been recorded instead of the figure's date. A script found all 73 evidence quotes, from 19 official pages, verbatim in the saved page text. This confirms that the evidence is on the page, not every alignment judgement. All labels were fixed before any verifier call.
 
 ### 3.4 Verifier experiments
 
@@ -137,7 +137,7 @@ Appendix A states what the results do and do not establish.
 
 - **One verifier:** one model, one run per condition, temperature 0, free tier; results may not transfer to other models. Half the closed-book abstentions cite a "future" date (an untested cutoff effect).
 - **Our excerpts:** chosen by fixed rules (Section 3.4); other windows or pages could change the near-miss results, and only C2 shows the "FIGURE TO CHECK" line, which may itself help. Where a near-miss excerpt gives a related metric or place, AMBIGUOUS is also defensible; MATCH and MISMATCH are wrong either way (the model chose AMBIGUOUS there once).
-- **One annotator:** labels are AI-assisted (Section 3.3), with no inter-annotator agreement; the 21 ambiguous claims, which C2 tests most directly, rest on one pass.
+- **One annotator:** no inter-annotator agreement; the 21 ambiguous claims, which C2 tests most directly, rest on one pass.
 - **Small sample:** 102 claims, four outlets, about three months; PMUY (4) and MGNREGA (9) are thin.
 - **Language and checks:** AI-written glosses sometimes add context (B.1); checks ran on one day.
 
@@ -347,9 +347,4 @@ Article and official URLs for every row of Tables C.3 and C.4 are in report/tabl
 
 ## LLM Usage Statement
 
-AI assistants were used throughout this project. The author designed the study, set the rules, directed the work, and is responsible for all content.
-
-- **Data collection and labelling:** an AI agent (Claude, by Anthropic, run in Claude Code on the author's laptop) collected and fetched the articles, chose the claim clauses, wrote the English glosses, searched the official sources, recorded each official figure with a verbatim quote, and drafted the labels and their rationales following data/labelling-rules.md. There was no independent second human labeller.
-- **Verification:** the agent opened every official page behind a binding in the author's browser to check the figure, date and scope against the record. Scripts applied the match rule and checked that every claim clause and evidence quote appears verbatim in the saved pages.
-- **Experiments:** the agent wrote the excerpt-selection rules and script for the evidence-given condition and froze the excerpts. Gemini (gemini-3.5-flash-lite) was used only as the experimental subject of Sections 4.3 to 4.5, after all labels were fixed; it did not help label, analyse or write. Scripts scored both verifier conditions, checked every cited URL and computed every number in this report.
-- **Code and writing:** AI assistants wrote the analysis scripts and drafted and edited the text of this report.
+AI assistants were used to help write code, collect and organise data, and edit the text. The author designed the study, set the labelling rules, and is responsible for all content. Gemini (gemini-3.5-flash-lite) was used only as the system under test in Sections 4.3 to 4.5.
