@@ -2,11 +2,11 @@
 
 AUTHOR: Wageesha Tripathi | Independent, Varanasi, India | tripathiwageesha2002@gmail.com
 
-ABSTRACT: A Hindi newspaper reported that "about 10 crore" farmers received the 24th PM-KISAN instalment. The official figure was 9.34 crore, so the claim was 7.1% too high. We collected 102 such numerical claims about six central schemes from four Hindi outlets. We asked how many can be tied to a dated official statistic, and whether an LLM verifier can tell when they cannot. Only 45.1% of claims (46/102) could be bound to an official statistic, and 24.5% cleanly. National claims were bound far more often than state claims (69.2% against 20.0%). Of the 25 cleanly bound claims, 88.0% matched. We then tested a free LLM verifier, gemini-3.5-flash-lite, on every claim in Hindi and English. Without evidence, it answered "cannot verify" in 92.2% of its 204 responses. Its abstention rate was almost the same whether official evidence existed (92.0%) or not (93.8%). Abstention was not the only problem: when it committed, it was usually wrong, and none of its cited sources showed its figure; one cited PIB release is about a Holi special train. Given the official excerpt, false abstention on cleanly bound claims fell from 92.0% to 0.0%, and 97.7% of answers on matching claims were MATCH. But the verifier never labelled an ambiguous claim AMBIGUOUS (0 of 42 answers), and it called 13.6% of near-miss answers a mismatch. Its overall agreement (68.8%) stayed below a simple excerpt-type baseline (76.2%). Verifiers in this domain should be judged on whether their answers follow the evidence, not on how often they abstain.
+ABSTRACT: A Hindi newspaper reported that "about 10 crore" farmers received the 24th PM-KISAN instalment. The official figure was 9.34 crore, so the claim was 7.1% too high. We collected 102 such numerical claims about six central schemes from four Hindi outlets. We asked how many can be tied to a dated official statistic, and whether an LLM verifier can tell when they cannot. Only 45.1% of claims (46/102) could be bound to an official statistic, and 24.5% cleanly. National claims were bound far more often than state claims (69.2% against 20.0%). Of the 25 cleanly bound claims, 88.0% matched. We then tested a free LLM verifier, gemini-3.5-flash-lite, on every claim in Hindi and English. Without evidence, it answered "cannot verify" in 92.2% of its 204 responses. Its abstention rate was similar on cleanly bound claims (92.0%) and unbindable ones (93.8%). Abstention was not the only problem: when it committed, it was usually wrong, and none of its cited sources showed its figure; one cited PIB release is about a Holi special train. Given the official excerpt, false abstention on cleanly bound claims fell from 92.0% to 0.0%, and 97.7% of answers on matching claims were MATCH. But the verifier never labelled an ambiguous claim AMBIGUOUS (0 of 42 answers), and it called 13.6% of near-miss answers a mismatch. Its overall agreement (68.8%) stayed below a simple excerpt-type baseline (76.2%). Verifiers in this domain should be judged on whether their answers follow the evidence, not on how often they abstain.
 
 ## 1. Introduction
 
-On 30 October 2026, Patrika reported that "about 10 crore" farmers had received the 24th PM-KISAN instalment. The Press Information Bureau (PIB) note for that day says 9.34 crore (also written "more than 9.34 crore"; "about 10 crore" would pass only if the true count were at least 9.524 crore). That is 7.1% above the official figure, and our rules allow only ±5% for "about" (Table C.3). Hindi newspapers report government schemes in numbers like this every day, and for many readers these articles are how they learn whether a scheme works. Most such numbers have an official counterpart: dated PIB releases in Hindi and English, scheme dashboards, and Parliament answers. Few people check. The sources are scattered, often in English, and dashboards overwrite last month's figure with today's.
+On 30 October 2026, Patrika reported that "about 10 crore" farmers had received the 24th PM-KISAN instalment. The Press Information Bureau (PIB) note for that day says 9.34 crore (also written "more than 9.34 crore"; "about 10 crore" would pass only if the true count were at least 9.524 crore). That is 7.1% above the official figure, and our rules allow only ±5% for "about" (Table C.3). Hindi newspapers report government schemes in numbers like this every day, and for many readers these articles are how they learn whether a scheme works. Many such numbers have an official counterpart: dated PIB releases in Hindi and English, scheme dashboards, and Parliament answers. Few people check. The sources are scattered, often in English, and dashboards overwrite last month's figure with today's.
 
 AI research agents now get the same question: is this number right? When no official figure exists, the honest answer is "I cannot verify this". The failure we care about is false verification: an agent cites an official-looking source that does not support the claimed number, so an unchecked claim looks checked.
 
@@ -54,7 +54,7 @@ This is an exploratory, single-annotator dataset. Articles were found, claims ch
 
 ### 3.4 Verifier experiments
 
-**Model.** All results are for **gemini-3.5-flash-lite** on the free Gemini API tier, at temperature 0, one run per condition; it was the only planned model we could run in full, so there is no model comparison (gemini-2.5 models returned HTTP 404 for new users on 14 November 2026; gemini-3.8-flash returned repeated HTTP 503 errors and allows 20 requests a day).
+**Model.** All results are for **gemini-3.5-flash-lite** on the free Gemini API tier, one run per condition (temperature 0 was requested, but this model ignores custom temperature values); it was the only planned model we could run in full, so there is no model comparison (gemini-2.5 models returned HTTP 404 for new users on 14 November 2026; gemini-3.8-flash returned repeated HTTP 503 errors and allows 20 requests a day).
 
 **Closed-book (C1).** The model saw the scheme name, the claim and the article date, nothing else, and returned a verdict (SUPPORTED, CONTRADICTED or CANNOT_VERIFY), the source title and URL, the official figure and its date, a confidence from 0 to 1 and a reason. It was told to answer CANNOT_VERIFY unless certain and not to guess a URL (Appendix B.1). Each claim was sent twice, as the Hindi clause and as its English gloss: 204 answers on 14 November 2026.
 
@@ -91,7 +91,7 @@ Geography makes the largest difference. National claims had 69.2% coverage (36/5
 
 **Abstention was not the only problem. When the model committed, it was usually wrong, and no cited source showed its figure.** The 16 committed answers were right 4 times (25.0%, CI 10.2-49.5%). In 10 the "official figure" was exactly the claim's own number, and 12 gave an as-of date before 2026. All 16 cited a source (12 distinct URLs) and none showed the stated figure: a cited-source failure rate of 100% (16/16, CI 80.6-100%). All 7 PIB links used release IDs that exist, but each opens an unrelated release: a Holi special train, a Sikh New Year greeting, a speech in Warsaw, and four more (Table C.5). The one answer with a correct verdict and a correct figure (C002, Hindi) cited the Holi train. Counting only dead or non-official URLs would flag 4 of 16 and miss every wrong PIB citation. These committed answers carried a mean stated confidence of 0.94 (Table C.6).
 
-TABLE: **Table 2.** gemini-3.5-flash-lite in both conditions, Hindi and English pooled (temperature 0, one run). Closed-book: 204 answers on 102 claims; evidence-given: 202 answers on the 101 claims with an excerpt. Wilson 95% CI in brackets. The expected answer uses the three closed-book verdicts in C1 and the four gold labels in C2. Per-language results: Tables C.8 and C.9.
+TABLE: **Table 2.** gemini-3.5-flash-lite in both conditions, Hindi and English pooled (one run). Closed-book: 204 answers on 102 claims; evidence-given: 202 answers on the 101 claims with an excerpt. Wilson 95% CI in brackets. The expected answer uses the three closed-book verdicts in C1 and the four gold labels in C2. Per-language results: Tables C.8 and C.9.
 | Measure | Closed-book | Evidence-given |
 |---|---|---|
 | Answer equals expected answer | 71.6% (146/204, 65.0-77.3) | 68.8% (139/202, 62.1-74.8) |
@@ -135,7 +135,7 @@ FIGURE: report/figures/fig2_closed_vs_evidence.png | 4.7 | **Figure 2.** Answers
 
 Appendix A states what the results do and do not establish.
 
-- **One verifier:** one model, one run per condition, temperature 0, free tier; results may not transfer to other models. Half the closed-book abstentions cite a "future" date (an untested cutoff effect).
+- **One verifier:** one model, one run per condition, free tier; results may not transfer to other models. Half the closed-book abstentions cite a "future" date (an untested cutoff effect).
 - **Our excerpts:** chosen by fixed rules (Section 3.4); other windows or pages could change the near-miss results, and only C2 shows the "FIGURE TO CHECK" line, which may itself help. Where a near-miss excerpt gives a related metric or place, AMBIGUOUS is also defensible; MATCH and MISMATCH are wrong either way (the model chose AMBIGUOUS there once).
 - **One annotator:** no inter-annotator agreement; the 21 ambiguous claims, which C2 tests most directly, rest on one pass.
 - **Small sample:** 102 claims, four outlets, about three months; PMUY (4) and MGNREGA (9) are thin.
@@ -147,7 +147,7 @@ More models and runs; a verifier that names metric, place and period first; a se
 
 ## 6. Conclusion
 
-In 102 numerical claims about six central schemes in Hindi news, 45.1% could be bound to a dated official statistic and 24.5% cleanly; cleanly bound claims matched 88.0% of the time. Without evidence, a free LLM verifier said "cannot verify" on 92.2% of answers, almost equally with and without official evidence, and no page it cited showed its figure. With the official excerpt, it labelled 97.7% of answers on matching claims correctly, but never flagged an ambiguous claim and called 13.6% of near-miss answers a mismatch.
+In 102 numerical claims about six central schemes in Hindi news, 45.1% could be bound to a dated official statistic and 24.5% cleanly; cleanly bound claims matched 88.0% of the time. Without evidence, a free LLM verifier said "cannot verify" on 92.2% of answers, almost equally on cleanly bound and unbindable claims, and no page it cited showed its figure. With the official excerpt, it labelled 97.7% of answers on matching claims correctly, but never flagged an ambiguous claim and called 13.6% of near-miss answers a mismatch.
 
 Giving the verifier the evidence is only half the job. It must also establish that the official figure measures the same thing, in the same place and period, as the claim. And it should be judged on whether it recognises insufficient or incomparable evidence, not on how often it abstains.
 
@@ -183,7 +183,7 @@ Giving the verifier the evidence is only half the job. It must also establish th
 
 ### B.1 Closed-book prompt (C1)
 
-The exact prompt sent for each closed-book call (scripts/run_verifier.py). {scheme} is the scheme's full name, {claim} the verbatim Hindi clause or its English gloss, and {date} the article date. The request set temperature 0 and a JSON response type.
+The exact prompt sent for each closed-book call (scripts/run_verifier.py). {scheme} is the scheme's full name, {claim} the verbatim Hindi clause or its English gloss, and {date} the article date. The request set temperature 0 (ignored by this model) and a JSON response type.
 
 ```
 You check numerical claims about Indian government schemes against official statistics.
@@ -321,7 +321,7 @@ TABLE: **Table C.7.** Binding labels by scheme (strict rule). Coverage = any bin
 | PMUY | 1 | 0 | 0 | 3 | 4 | 25.0% (1/4, 4.6-69.9) | 100.0% (1/1, 20.7-100.0) |
 | **All** | **22** | **3** | **21** | **56** | **102** | **45.1% (46/102, 35.8-54.8)** | **88.0% (22/25, 70.0-95.8)** |
 
-TABLE: **Table C.8.** Closed-book results by language (gemini-3.5-flash-lite, temperature 0, one run); 204 answers = 102 claims × Hindi and English. Wilson 95% CI for the pooled column.
+TABLE: **Table C.8.** Closed-book results by language (gemini-3.5-flash-lite, one run); 204 answers = 102 claims × Hindi and English. Wilson 95% CI for the pooled column.
 | Measure | Hindi | English | Both |
 |---|---|---|---|
 | Verdict agrees with gold label | 73.5% (75/102) | 69.6% (71/102) | 71.6% (146/204, 65.0-77.3) |
@@ -331,7 +331,7 @@ TABLE: **Table C.8.** Closed-book results by language (gemini-3.5-flash-lite, te
 | Committed answers (verdict right) | 8 (3 right) | 8 (1 right) | 16 (4 right, 25.0%, 10.2-49.5) |
 | Always-CANNOT_VERIFY baseline | 75.5% (77/102) | 75.5% (77/102) | 75.5% (154/204, 69.2-80.9) |
 
-TABLE: **Table C.9.** Evidence-given results by language (gemini-3.5-flash-lite, temperature 0, one run); 202 answers = 101 claims × Hindi and English. Wilson 95% CI for the pooled column.
+TABLE: **Table C.9.** Evidence-given results by language (gemini-3.5-flash-lite, one run); 202 answers = 101 claims × Hindi and English. Wilson 95% CI for the pooled column.
 | Measure | Hindi | English | Both |
 |---|---|---|---|
 | Label equals gold label (4 labels) | 67.3% (68/101) | 70.3% (71/101) | 68.8% (139/202, 62.1-74.8) |

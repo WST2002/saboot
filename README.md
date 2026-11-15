@@ -61,7 +61,7 @@ python -I -X utf8 scripts/build_paper_docx.py report/saboot-final-v2.md # paper 
 
 ## Verifier evaluation
 
-`scripts/run_verifier.py` asked gemini-3.5-flash-lite (Gemini API free tier, temperature 0, closed-book: scheme, claim and article date only) to check all 102 claims, once with the Hindi clause and once with the English gloss, on 14 November 2026. gemini-3.8-flash was overloaded (HTTP 503) and answered one call, so it is excluded; the planned gemini-2.5 models were not available to new keys. Main results (from `report/verifier_tables.md`):
+`scripts/run_verifier.py` asked gemini-3.5-flash-lite (Gemini API free tier, temperature 0 requested but ignored by this model, closed-book: scheme, claim and article date only) to check all 102 claims, once with the Hindi clause and once with the English gloss, on 14 November 2026. gemini-3.8-flash was overloaded (HTTP 503) and answered one call, so it is excluded; the planned gemini-2.5 models were not available to new keys. Main results (from `report/verifier_tables.md`):
 
 | Measure | Result |
 |---|---|
