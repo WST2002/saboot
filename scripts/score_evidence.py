@@ -1,4 +1,4 @@
-"""Score the evidence-given LLM-verifier condition (methodology.md sections 4-5, condition C2).
+"""Score the evidence-given LLM-verifier condition (paper Section 3.4, condition C2).
 
 Reads data/evidence_results.jsonl (scripts/run_evidence.py), data/evidence_excerpts.jsonl, data/claims.jsonl,
 data/bindings_verified.jsonl and, for the comparison, the closed-book answers in data/verifier_results.jsonl.

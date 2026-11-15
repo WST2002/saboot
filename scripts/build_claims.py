@@ -4,7 +4,7 @@ data/candidates.jsonl (machine-extracted sentences).
 Checks: every clause and num_raw must occur verbatim in the extracted sentence,
 and the sentence must occur in the stored raw article text. Numbers are
 normalised by parse_number() (a manual "value" is allowed only for number words
-and is cross-checked to be present). Dedup rule (methodology.md): same scheme,
+and is cross-checked to be present). Dedup rule (paper, Section 3.1): same scheme,
 metric, geography and normalised number within 7 days -> keep earliest.
 Usage: python -I scripts/build_claims.py"""
 import html as H

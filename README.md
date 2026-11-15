@@ -33,7 +33,6 @@ Main results (from `report/tables.md`):
 | `data/candidates.jsonl`, `data/curation.jsonl` | Machine-extracted candidate sentences and the hand-selected claim clauses |
 | `data/articles_log.jsonl`, `data/article_urls.txt` | Every article fetched, including those with no usable claim |
 | `data/labelling-rules.md` | The labelling and match rules, fixed before labelling |
-| `methodology.md`, `data-sources.md`, `related-work.md` | Study protocol, official sources, related work |
 | `data/verifier_results.jsonl`, `data/llm_raw/` | Every verifier answer (parsed) and the raw API response for each call |
 | `data/url_checks.jsonl` | One check per source URL the verifier cited (plain GET, then a browser for non-PIB pages) |
 | `scripts/` | Fetching, extraction, claim building, labelling, verification merge, verifier run and scoring, report tables, paper build |

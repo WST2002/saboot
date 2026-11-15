@@ -1,4 +1,4 @@
-"""Run the evidence-given LLM-verifier condition (methodology.md section 4, condition C2).
+"""Run the evidence-given LLM-verifier condition (paper Section 3.4, condition C2).
 
 Each claim with a frozen excerpt in data/evidence_excerpts.jsonl (built beforehand by
 scripts/build_evidence_excerpts.py; 46 bound or ambiguous claims with the excerpt they were bound to,

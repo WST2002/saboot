@@ -1,6 +1,6 @@
 # Saboot: labelling rules (fixed before labelling, 2026-11-14)
 
-These rules fill the gaps in `methodology.md` §2-3. They were written before any
+These rules define how claims were labelled (paper, Section 3.2). They were written before any
 binding label was assigned and are applied by `scripts/label.py`, which computes
 the match decision from the numbers. The human-style judgement (which official
 figure is the "same metric, same geography, same period") is recorded per claim
@@ -55,7 +55,7 @@ unbindable under this protocol, even if a state press note exists.
 ## 5. Access limits on 2026-11-14 (affects evidence quality)
 
 - **pib.gov.in returned HTTP 403** to the study's fetcher and to the WebFetch tool on
-  2026-11-14 (it was reachable earlier the same morning, see data-sources.md). The study did
+  2026-11-14 (it was reachable earlier the same morning). The study did
   not try to get around the block. PIB figures were therefore taken from **search-engine
   extracts of the PIB page** (WebSearch restricted to pib.gov.in), which quote the page text.
   These bindings carry `evidence_access: "search_extract"` and `confidence: 2` at most; the
@@ -67,7 +67,7 @@ unbindable under this protocol, even if a state press note exists.
   topic page fetched at 10:30 before this was noticed was deleted from `data/raw/`.
 - zeenews.india.com returned 403/404/410 to the fetcher; its articles were dropped.
 
-## 6. Scope decisions (deviations from methodology.md, stated up front)
+## 6. Scope decisions (stated up front)
 
 - **Geography:** only India- and state-level claims are kept (the methodology's `geography`
   field is "India/state"). District figures were seen in many articles but excluded.

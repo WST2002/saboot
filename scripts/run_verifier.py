@@ -1,4 +1,4 @@
-"""Run the closed-book LLM-verifier experiment (methodology.md section 4, condition C1).
+"""Run the closed-book LLM-verifier experiment (paper Section 3.4, condition C1).
 
 Each of the 102 claims is sent to each model twice: once with the original Hindi
 clause and once with its English gloss. The instructions are the same English

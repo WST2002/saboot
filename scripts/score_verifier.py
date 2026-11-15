@@ -1,4 +1,4 @@
-"""Score the closed-book LLM-verifier run (methodology.md sections 4-5, condition C1).
+"""Score the closed-book LLM-verifier run (paper Section 3.4, condition C1).
 
 Reads data/verifier_results.jsonl (written by run_verifier.py), data/claims.jsonl and
 data/bindings_verified.jsonl, and writes report/verifier_tables.md and

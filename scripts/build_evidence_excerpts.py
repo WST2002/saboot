@@ -1,4 +1,4 @@
-"""Build and freeze the official-evidence excerpts for the evidence-given verifier condition (methodology.md section 4, C2).
+"""Build and freeze the official-evidence excerpts for the evidence-given verifier condition (paper Section 3.4, C2).
 
 Run once, before any model call. Writes data/evidence_excerpts.jsonl, one row per claim, with the exact
 evidence block the model will see and its sha256. scripts/run_evidence.py refuses to run if a block's hash
