@@ -54,7 +54,7 @@ This is an exploratory, single-annotator, AI-assisted dataset, not independently
 
 ### 3.4 Verifier experiments
 
-**Model.** All results are for **gemini-3.5-flash-lite** on the free Gemini API tier, at temperature 0, one run per condition; it was the only planned model we could run in full, so there is no model comparison (the gemini-2.5 models returned HTTP 404, "no longer available to new users", on 14 November 2026; gemini-3.8-flash returned repeated HTTP 503 overload errors and allows 20 requests a day on the free tier).
+**Model.** All results are for **gemini-3.5-flash-lite** on the free Gemini API tier, at temperature 0, one run per condition; it was the only planned model we could run in full, so there is no model comparison (gemini-2.5 models returned HTTP 404 for new users on 14 November 2026; gemini-3.8-flash returned repeated HTTP 503 errors and allows 20 requests a day).
 
 **Closed-book (C1).** The model saw the scheme name, the claim and the article date, nothing else, and returned a verdict (SUPPORTED, CONTRADICTED or CANNOT_VERIFY), the source title and URL, the official figure and its date, a confidence from 0 to 1 and a reason. It was told to answer CANNOT_VERIFY unless certain and not to guess a URL (Appendix B.1). Each claim was sent twice, as the Hindi clause and as its English gloss: 204 answers on 14 November 2026.
 
@@ -109,7 +109,7 @@ TABLE: **Table 2.** gemini-3.5-flash-lite in both conditions, Hindi and English 
 
 **Given the official excerpt, the model stopped abstaining but did not check comparability.** In the clearest case (C088, Hindi, near-miss excerpt), a claim that "about Rs 500 crore" reached Chhattisgarh farmers was called a mismatch with the national Rs 18,690 crore. The verifier compared the two numbers but did not check that they measured the same thing, in the same place and period. The same failure runs through the ambiguous and near-miss results below (Figure 2, Table 2).
 
-**Clean cases were handled well.** False abstention on cleanly bound claims fell to 0.0%, and 43 of 44 matching answers were MATCH. The two missed mismatches are one claim in both languages: the "about 10 crore" farmers (C093), accepted although the 7.1% gap is outside the ±5% that "about" allows. The reported figure equalled the gold official figure in 72.1% of answers that gave one (62/86), and 96.2% of the quotes (100/104) appear verbatim in the excerpt.
+**Clean cases were handled well.** False abstention on cleanly bound claims fell to 0.0%, and 43 of 44 matching answers were MATCH. The two missed mismatches are one claim in both languages: the "about 10 crore" farmers (C093), accepted although the 7.1% gap is outside the ±5% that "about" allows.
 
 **AMBIGUOUS was never used where it applied.** On the 42 answers for ambiguous claims the verifier said MATCH 18 times, MISMATCH 18 times and CANNOT_VERIFY 6 times; across all 202 answers it chose AMBIGUOUS once, on an unbindable claim. Every figure in the excerpt was treated as directly comparable. "48.54 crore Ayushman cards" was called a mismatch with "48.51 crore people holding cards", a different count (C044). October claims about national tap coverage were set against 82.09% dated 18 July 2026 and both called mismatches (C063, C068). For C036, where PIB releases give both 81.56% and 81.57% for the same date, the verifier reported the claim's own 81.57% and answered MATCH. In 29 answers the reported figure was the claim's own number. For matching claims that is expected; C036 shows the risk, a pick of whichever official figure agrees with the claim.
 
@@ -125,37 +125,37 @@ FIGURE: report/figures/fig2_closed_vs_evidence.png | 4.7 | **Figure 2.** Answers
 
 ## 5. Discussion and Limitations
 
-**Coverage reflects what central sources publish.** National totals appear in dated releases; state figures often sit behind JavaScript dashboards or are overwritten by live values. The fix is on the publishing side: dated, archived, state-wise and definition-labelled releases.
+**Coverage reflects what central sources publish.** National totals appear in dated releases; state figures often sit in live JavaScript dashboards.
 
 **A high abstention rate is not the same as knowing when to abstain.** More than half of all claims, and most state claims, have no clean official figure, so a careful verifier should often say "cannot verify". The closed-book verifier said it almost regardless of the claim. By abstention rate alone it looks safe, yet a blanket abstainer scored higher, and its few commitments came with official-looking citations that do not show the figure. This is the false verification the study set out to measure.
 
-**Evidence fixes abstention, not judgement.** With the excerpt, the verifier became a good number comparer. It did not ask whether the official figure measures the same thing, in the same place, at the same time as the claim. Definition clashes, period gaps and conflicting releases came back as MATCH or MISMATCH, and a national total could "contradict" a state claim. For an agent that retrieves official pages, retrieval is the easy half; the hard half is this alignment step, which is also where our human labels needed judgement calls. Evaluations in this domain should therefore report abstention split by whether evidence exists, ambiguity detection, false contradictions on near-miss evidence, and a check of every cited source.
+**Evidence fixes abstention, not judgement.** With the excerpt, the verifier became a good number comparer. It did not ask whether the official figure measures the same thing, in the same place, at the same time as the claim. For an agent that retrieves official pages, retrieval is the easy half; the hard half is this alignment step.
 
 ### Limitations
 
-The results hold within the scope below; Appendix A states what they do and do not establish.
+Appendix A states what the results do and do not establish.
 
-- **One verifier:** one model, one run per condition, temperature 0, free tier; results may not transfer to larger, later or search-enabled models. Half the closed-book abstentions cite a "future" date, which may reflect a training-data cutoff; this was not tested.
-- **Our excerpts:** chosen by fixed rules (Section 3.4); other window sizes or page sets could change the near-miss results, and only C2 shows the "FIGURE TO CHECK" line, which may itself help the model find the number. Where a near-miss excerpt gives a related metric or another place, the prompt's AMBIGUOUS is also defensible; MATCH and MISMATCH are wrong either way, and the model chose AMBIGUOUS there only once.
+- **One verifier:** one model, one run per condition, temperature 0, free tier; results may not transfer to other models. Half the closed-book abstentions cite a "future" date (an untested cutoff effect).
+- **Our excerpts:** chosen by fixed rules (Section 3.4); other windows or pages could change the near-miss results, and only C2 shows the "FIGURE TO CHECK" line, which may itself help. Where a near-miss excerpt gives a related metric or place, AMBIGUOUS is also defensible; MATCH and MISMATCH are wrong either way (the model chose AMBIGUOUS there once).
 - **One annotator:** labels are AI-assisted (Section 3.3), with no inter-annotator agreement; the 21 ambiguous claims, which C2 tests most directly, rest on one pass.
-- **Small sample:** 102 claims, four outlets, just over three months; PMUY (4) and MGNREGA (9) are thin.
-- **Language and checks:** the AI agent wrote the English gloss, which sometimes adds context (Appendix B.1). Source checks ran from one network on one day.
+- **Small sample:** 102 claims, four outlets, about three months; PMUY (4) and MGNREGA (9) are thin.
+- **Language and checks:** AI-written glosses sometimes add context (B.1); checks ran on one day.
 
 ### Future Work
 
-Test several models, including search-enabled ones, over several runs; ask the verifier to state metric, place and period before comparing; add a second labeller and more outlets.
+More models and runs; a verifier that names metric, place and period first; a second labeller.
 
 ## 6. Conclusion
 
-In 102 numerical claims about six central schemes in Hindi news, 45.1% could be bound to a dated official statistic and 24.5% cleanly, with national claims bound far more often (69.2%) than state claims (20.0%); cleanly bound claims matched 88.0% of the time. Without evidence, a free LLM verifier said "cannot verify" on 92.2% of answers, almost equally with and without official evidence, and no page it cited showed its figure. With the official excerpt, it labelled 97.7% of answers on matching claims correctly, but never flagged an ambiguous claim and called 13.6% of near-miss answers a mismatch.
+In 102 numerical claims about six central schemes in Hindi news, 45.1% could be bound to a dated official statistic and 24.5% cleanly; cleanly bound claims matched 88.0% of the time. Without evidence, a free LLM verifier said "cannot verify" on 92.2% of answers, almost equally with and without official evidence, and no page it cited showed its figure. With the official excerpt, it labelled 97.7% of answers on matching claims correctly, but never flagged an ambiguous claim and called 13.6% of near-miss answers a mismatch.
 
-For fact-checking tools and AI research agents serving Hindi readers, "cannot verify" will often be the right answer for scheme numbers, especially at state level. Giving the verifier the evidence is only half the job. It must also establish that the official figure measures the same thing, in the same place and period, as the claim. And it should be judged on whether it recognises insufficient or incomparable evidence, not on how often it abstains.
+Giving the verifier the evidence is only half the job. It must also establish that the official figure measures the same thing, in the same place and period, as the claim. And it should be judged on whether it recognises insufficient or incomparable evidence, not on how often it abstains.
 
 ## Code and Data
 
 - **Code repository:** https://github.com/WST2002/saboot (scripts for every step, table and figure).
-- **Data/Datasets:** same repository: claims (no full articles), labels with evidence quotes, page checks, all verifier answers, URL checks and the frozen excerpts.
-- **Preexisting work:** none; all code, data and text were produced during the sprint (13 to 15 November 2026).
+- **Data/Datasets:** same repository: claims (no full articles), labels, evidence quotes, verifier answers, URL checks, frozen excerpts.
+- **Preexisting work:** none; everything was made during the sprint (13 to 15 November 2026).
 
 ## References
 
