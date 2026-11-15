@@ -1,11 +1,11 @@
-"""Build report/saboot-final.docx (or <source>.docx) on the official Apart template from report/saboot-final.md.
+"""Build report/saboot-final-v2.docx (or <source>.docx) on the official Apart template from report/saboot-final-v2.md.
 
 Keeps the template's styles, title block (title, author table, "With Apart Research",
 abstract box, sprint footnote) and section headings; removes the guidance text and the
 info box; writes our headings, paragraphs, real Word tables and figures in the
 template's own fonts. PDF export is done separately in Word.
 
-Source markup (report/saboot-final.md):
+Source markup (report/saboot-final-v2.md):
   # Title            -> template title
   AUTHOR: name | affiliation | email
   ABSTRACT: text     -> abstract box
@@ -31,8 +31,8 @@ from docx.shared import Inches, Pt, RGBColor
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE = os.path.join(ROOT, "apart-submission-template.docx")
-SOURCE = os.path.join(ROOT, "report", "saboot-final.md")
-OUT = os.path.join(ROOT, "report", "saboot-final.docx")
+SOURCE = os.path.join(ROOT, "report", "saboot-final-v2.md")
+OUT = os.path.join(ROOT, "report", "saboot-final-v2.docx")
 SERIF = "Old Standard TT"
 DEVANAGARI = "Nirmala UI"
 TEXT_WIDTH = 6.5
